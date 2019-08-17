@@ -104,12 +104,17 @@ a.link-sf:active:before {
     padding: 30px;
 }
 
+.hc1 {
+    border-top: 0px;
+}
+
 .text-sf {
     color: #62d0f0;
 }
 
 .text-crystal {
-    color: rgba(255, 255, 255, .25);
+    left: 40%;
+    color: rgba(255, 255, 255, .85);
 }
 
 .text-white-op {
@@ -125,7 +130,7 @@ a.link-sf:active:before {
 }
 
 .btn.btn-xl {
-    padding: 14px 12px;
+    padding: 10px 12px;
 }
 
 .btn.btn-sf {
@@ -256,10 +261,10 @@ a.link-sf:active:before {
 /* Circles */
 .circles {
     position: relative;
-    left: 50%;
+    left: 30%;
     margin-left: -280px;
-    width: 560px;
-    height: 560px;
+    width: 256px;
+    height: 256px;
 }
 
 .circle {
@@ -270,8 +275,8 @@ a.link-sf:active:before {
 
 .circles-main-content {
     top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
+    left: 150%;
+    transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;

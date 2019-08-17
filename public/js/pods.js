@@ -157,7 +157,7 @@ function loadinfo() {
         symbol.className = 'symbol';
         symbol.textContent = podinfo[ i ];
         element.appendChild( symbol );
-        $('<button type="button" onclick="alert(\'Hello world!\')">').text(podinfo[i]+' '+ podinfo[ i + 7 ]).appendTo('#myblock');
+        $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(\'Hello world!\')">').text(podinfo[i]+' '+ podinfo[ i + 7 ]).appendTo('#myblock');
         var details = document.createElement( 'div' );
         details.className = 'restarts';
         var podname = document.createElement('podname'); // is a node
