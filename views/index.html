@@ -105,16 +105,16 @@
                             <hr class="hc1">
                         <div class="row">
                             <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf push-10">DATA_DRIVE</button>
+                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail1">DATA_DRIVE</button>
                             </div>
                             <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf push-10">PO_DATABASE</button>
+                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail2">PO_DATABASE</button>
                             </div>
                             <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="500">
-                                <button class="btn btn-xl btn-block btn-sf">ACTIVE_ROUTE</button>
+                                <button class="btn btn-xl btn-block btn-sf" id="podinfodetail3">ACTIVE_ROUTE</button>
                             </div>
                             <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">
-                                <button class="btn btn-xl btn-block btn-sf">AUTO_PILOT</button>
+                                <button class="btn btn-xl btn-block btn-sf" id="podinfodetail4">AUTO_PILOT</button>
                             </div>
                         </div>
                     </div>
@@ -337,6 +337,7 @@
             }
             var mynamespace = 'default';
             var podinfo = [];
+            var selecteditem = "";
             jQuery(function(){
                 // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
                 Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
@@ -349,6 +350,10 @@
             function myNamespaceRefresh() {
                 loadnamespaces();
                 //namespaces.splice(0, namespaces.length)
+            }
+
+            function selectItem(itemtext) {
+                selecteditem = itemtext;
             }
 
             var intervalID = window.setInterval(myRefresh, 2000);

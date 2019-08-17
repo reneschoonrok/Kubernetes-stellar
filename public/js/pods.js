@@ -157,7 +157,8 @@ function loadinfo() {
         symbol.className = 'symbol';
         symbol.textContent = podinfo[ i ];
         element.appendChild( symbol );
-        $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(\'Hello world!\')">').text(podinfo[i]+' '+ podinfo[ i + 7 ]).appendTo('#myblock');
+        //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(this.innerText)">').text(podinfo[i]).appendTo('#myblock');
+        $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i+8]).appendTo('#myblock');
         var details = document.createElement( 'div' );
         details.className = 'restarts';
         var podname = document.createElement('podname'); // is a node
@@ -214,6 +215,54 @@ function loadinfo() {
 
 
         };
+        if (selecteditem == podinfo[i+8]) {
+            podinfodetail1.innerHTML = podinfo[ i + 5 ];
+            podinfodetail2.innerHTML = podinfo[ i + 7 ];
+            podinfodetail3.innerHTML = podinfo[ i + 1 ];
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('GET', '/poddetail?mynamespace='+mynamespace+'&mypoddetail='+selecteditem, true);
+            //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = JSON.parse(xhttp.responseText);
+                    //console.log(response);
+                    //info[0] = jsonPath(response , "$..metadata.name");
+
+                    //var response5 = jsonPath(response , "$.spec.containers[*].image");
+
+                   // areatext1.value= '';
+                   // areatext1.value+='Podname         : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
+                    podinfodetail4.innerHTML ='Pod IP          : ' + jsonPath(response , "$..status.podIP")+ "\r\n";
+                   // areatext1.value+='Podstatus       : ' + jsonPath(response , "$..status.phase")+ "\r\n";
+                   // areatext1.value+='Pod starttime   : ' + jsonPath(response , "$..status.startTime")+ "\r\n";
+                    //areatext1.value+='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
+                    //areatext1.value+='Containers #    : ' + response5.length+ "\r\n";
+                    //areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
+                    //areatext1.value+='Containers ready: ' + jsonPath(response , "$..status.containerStatuses[*].ready")+ "\r\n";
+                    //areatext1.value+='Container ports : ' + jsonPath(response , "$..spec.containers[*].ports[0].containerPort")+ "\r\n";
+                    //areatext1.value+='cpu requests    : ' + jsonPath(response , "$..spec.containers[*].resources.requests.cpu")+ "\r\n";
+                    //areatext1.value+='memory requests : ' + jsonPath(response , "$..spec.containers[*].resources.requests.memory")+ "\r\n";
+                    //areatext1.value+='cpu limits      : ' + jsonPath(response , "$..spec.containers[*].resources.limits.cpu")+ "\r\n";
+                    //areatext1.value+='memory limits   : ' + jsonPath(response , "$..spec.containers[*].resources.limits.memory")+ "\r\n";
+
+
+                    //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
+                    //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
+                    //detail10.innerHTML = 'Open spec';
+                    //detail11.innerHTML = 'Delete pod';
+                    //detail13.innerHTML = '';
+                    //detail14.innerHTML = '';
+                }
+            }
+
+
+
+
+        }
+
+
         element.appendChild( podstatus );
         var object = new THREE.CSS3DObject( element );
         object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1360;
