@@ -69,11 +69,14 @@ function loadinfo() {
     var arrayVariable = ['one','two','three'],
         arrayLength = arrayVariable.length;
 
-    for (i = 0; i < arrayLength; i++) {
-        $('<div class="results" />').text(arrayVariable[i]).appendTo('body');
-        $('<div class="row items-push overflow-hidden" />').text(arrayVariable[i]).appendTo('body');
+    //for (i = 0; i < arrayLength; i++) {
+    //    $('<div class="results" />').text(arrayVariable[i]).appendTo('body');
+    //    $('<div class="row items-push overflow-hidden" />').text(arrayVariable[i]).appendTo('#myblock');
+    //}
+    const myNode = document.getElementById("myblock");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
     }
-
     for ( var i = 0; i < podinfo.length; i += 9 ) {
 
         var element = document.createElement( 'div' );
@@ -154,7 +157,7 @@ function loadinfo() {
         symbol.className = 'symbol';
         symbol.textContent = podinfo[ i ];
         element.appendChild( symbol );
-
+        $('<div class="row items-push overflow-hidden" />').text(podinfo[i]).appendTo('#myblock');
         var details = document.createElement( 'div' );
         details.className = 'restarts';
         var podname = document.createElement('podname'); // is a node
