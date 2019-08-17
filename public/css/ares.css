@@ -12,7 +12,7 @@ body {
     color: #e8f4ff;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
-    background-image: url(../img/bg_ares.jpg);
+    background-image: url(/img/bg_ares.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -30,6 +30,8 @@ a {
     -webkit-transition: color .15s ease-out;
     transition: color .15s ease-out;
 }
+
+
 
 a:hover,
 a:focus {
@@ -74,6 +76,32 @@ a.link-sf:active:before {
     -webkit-transform: scaleY(1.2);
     -ms-transform: scaleY(1.2);
     transform: scaleY(1.2);
+}
+
+
+.box select {
+    background-color: #0a243a;
+    color: white;
+    width: 200px;
+    border: none;
+    font-size: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.box::before {
+    font-family: FontAwesome;
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    text-align: left;
+    font-size: 28px;
+    line-height: 45px;
+    pointer-events: none;
+}
+
+.box select option {
+    padding: 30px;
 }
 
 .text-sf {

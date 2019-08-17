@@ -127,7 +127,7 @@ async function getevents (namespace_name) {
 
 
 app.get('/', function (req, res) {
-    res.render('../views/indexares.html');
+    res.render('../views/index.html');
     console.log("Home page displayed");
 });
 
