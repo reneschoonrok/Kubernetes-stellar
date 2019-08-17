@@ -1,6 +1,8 @@
 function loadinfo() {
 
   var xhttp = new XMLHttpRequest();
+    console.log(document.getElementById("selectnamespace").value);
+    // var mynamespace2=document.getElementById("selectnamespace").value;
   xhttp.open('GET', '/pods?mynamespace='+mynamespace, true);
   //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/", true);
   xhttp.send();
@@ -45,20 +47,32 @@ function loadinfo() {
   }
 };
   //clear the scene before filling it again
-  var endcounter = scene.children.length-1;
-      for (var i = endcounter; i >= 0; i--){
-         if (scene.children[i].type== 'pod'){
-           scene.remove(scene.children[i]);
-         }
-   }
+  //var endcounter = scene.children.length-1;
+  //    for (var i = endcounter; i >= 0; i--){
+  //       //if (scene.children[i].type== 'pod'){
+  //         scene.remove(scene.children[i]);
+  //       }
+  // }
 
-   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
-      if (sceneGl.children[i].type== 'Glpod'){
-         sceneGl.remove(sceneGl.children[i]);
-      }
+  // for (var i = sceneGl.children.length-1; i > -1; i -= 1){
+  //    if (sceneGl.children[i].type== 'Glpod'){
+  //       sceneGl.remove(sceneGl.children[i]);
+  //    }
 
-   }
+  // }
+    if (podinfo.length > 8) {
+        podnum.innerHTML = podinfo.length / 9
+    } else {
+        podnum.innerHTML = 0
+    }
 
+    var arrayVariable = ['one','two','three'],
+        arrayLength = arrayVariable.length;
+
+    for (i = 0; i < arrayLength; i++) {
+        $('<div class="results" />').text(arrayVariable[i]).appendTo('body');
+        $('<div class="row items-push overflow-hidden" />').text(arrayVariable[i]).appendTo('body');
+    }
 
     for ( var i = 0; i < podinfo.length; i += 9 ) {
 
@@ -191,10 +205,10 @@ function loadinfo() {
 
         if ( podstatus.textContent == "-Podstatus: Running") {
            podstatus.className = 'podgood';
-           cubecontainer = new THREE.Mesh( boxGeom1, materialready );//glscene
+
         } else {
            podstatus.className = 'podbad';
-           cubecontainer = new THREE.Mesh( boxGeom1, materialnotready );//glscene
+
 
         };
         element.appendChild( podstatus );
@@ -202,11 +216,7 @@ function loadinfo() {
         object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1360;
         object.position.y = - ( podinfo[ i + 4 ] * 130 ) + 1030;
         object.type = 'pod';
-        cubecontainer.position.copy(new THREE.Vector3(object.position.x+160,object.position.y-40, 0));//glscene
-        cubecontainer.type='Glpod'
-        sceneGl.add(cubecontainer);//glscene
-        scene.add( object );
-        objects.push( object );
+
     }
 
 }
