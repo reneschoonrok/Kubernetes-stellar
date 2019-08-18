@@ -88,7 +88,7 @@
                             </div>
                             <span class="circle circles-main-content visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="100">
 
-                                <span class="text-crystal">kubernetes</span>
+                                <span class="text-crystal" id="logoword">kubernetes</span>
                             </span>
                             <hr class="hc1">
                             <hr class="hc1">
@@ -104,17 +104,29 @@
                             <hr class="hc1">
                             <hr class="hc1">
                         <div class="row">
-                            <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail1">DATA_DRIVE</button>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail1">DATA_DRIVE</button>
                             </div>
-                            <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail2">PO_DATABASE</button>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail2">PO_DATABASE</button>
                             </div>
-                            <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="500">
-                                <button class="btn btn-xl btn-block btn-sf" id="podinfodetail3">ACTIVE_ROUTE</button>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail3">ACTIVE_ROUTE</button>
                             </div>
-                            <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">
-                                <button class="btn btn-xl btn-block btn-sf" id="podinfodetail4">AUTO_PILOT</button>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail4">AUTO_PILOT</button>
+                            </div>
+                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail5">AUTO_PILOT</button>
+                            </div>
+                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail6">AUTO_PILOT</button>
+                            </div>
+                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail7">AUTO_PILOT</button>
+                            </div>
+                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail8">AUTO_PILOT</button>
                             </div>
                         </div>
                     </div>
@@ -324,6 +336,7 @@
         <script src="/js/jquery.easypiechart.min.js"></script>
         <script src="/js/ares.js"></script>
         <script src="js/pods.js"></script>
+        <script src="js/poddetails.js"></script>
         <script src="js/namespaces.js"></script>
         <script src="js/three.js"></script>
         <script src="js/TrackballControls.js"></script>
@@ -366,6 +379,12 @@
                 podinfo.splice(0, podinfo.length)
                 //replicaset.splice(0, replicaset.length)
                 //eventinfo.splice(0, eventinfo.length)
+            }
+
+            var intervalID = window.setInterval(poddetails, 2000);
+
+            function poddetails() {
+                loadpoddetails();
             }
 
         </script>

@@ -158,7 +158,11 @@ function loadinfo() {
         symbol.textContent = podinfo[ i ];
         element.appendChild( symbol );
         //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(this.innerText)">').text(podinfo[i]).appendTo('#myblock');
-        $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i+8]).appendTo('#myblock');
+        if ( number.textContent == "-Ready: true") {
+            $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
+        } else {
+            $('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
+        }
         var details = document.createElement( 'div' );
         details.className = 'restarts';
         var podname = document.createElement('podname'); // is a node
@@ -215,7 +219,7 @@ function loadinfo() {
 
 
         };
-        if (selecteditem == podinfo[i+8]) {
+        if (selecteditem == "skip") {
             podinfodetail1.innerHTML = podinfo[ i + 5 ];
             podinfodetail2.innerHTML = podinfo[ i + 7 ];
             podinfodetail3.innerHTML = podinfo[ i + 1 ];
