@@ -78,6 +78,33 @@ a.link-sf:active:before {
     transform: scaleY(1.2);
 }
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 0px 0;
+    border-radius: 0px;
+    top: +50px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    top: +50px;
+}
 
 .box select {
     background-color: #0a243a;
@@ -203,10 +230,93 @@ border-color: rgba(255, 255, 255, 1);
 outline: 0;
 }
 
-.btn.btn-sf2:active {
-color: #fff;
+.btn.btn-sf2t:active {
+color: #3bff00;
 border-color: #fff;
 background: rgba(255, 255, 255, .15);
+}
+
+.btn.btn-sf2t {
+    width: auto;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(43, 193, 110, 1);
+    /* border: 2px solid rgba(255, 255, 255, .25); */
+    border-left-width: 4px;
+    border-right-width: 4px;
+    background: transparent;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+}
+
+.btn.btn-sf2t:hover,
+.btn.btn-sf2t:focus {
+    color: rgba(43, 193, 110, 1);
+    border-color: rgba(255, 255, 255, 1);
+    outline: 0;
+}
+
+.btn.btn-sf2f {
+    width: auto;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(255, 7, 9, 0.75);
+    /* border: 2px solid rgba(255, 255, 255, .25); */
+    border-left-width: 4px;
+    border-right-width: 4px;
+    background: transparent;
+    padding: 0px 0px;
+    margin-bottom: 0px;
+}
+
+.btn.btn-sf2f:hover,
+.btn.btn-sf2f:focus {
+    color: rgb(255, 7, 9);
+    border-color: rgba(255, 255, 255, 1);
+    outline: 0;
+}
+
+.btn.btn-sf2f:active {
+    color: #ff0709;
+    border-color: #fff;
+    background: rgba(255, 255, 255, .15);
+}
+
+.btn.btn-sf2:active {
+    color: #ff0709;
+    border-color: #fff;
+    background: rgba(255, 255, 255, .15);
+}
+
+.btn.btn-sf3 {
+    width: auto;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(43, 193, 110, 1);
+    /* border: 2px solid rgba(255, 255, 255, .25); */
+    border-left-width: 2px;
+    border-right-width: 2px;
+    background: transparent;
+    padding: 6px 6px;
+    margin-bottom: 0px;
+    border-color: rgba(255, 255, 255, .5);
+    outline: 0;
+}
+
+.btn.btn-sf3:hover,
+.btn.btn-sf3:focus {
+    color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 1);
+    outline: 0;
+}
+
+.btn.btn-sf3:active {
+    color: #fff;
+    border-color: #fff;
+    background: rgba(255, 255, 255, .15);
 }
 
 .progress {

@@ -38,18 +38,21 @@ function loadevents() {
   }
 };
 
-   //clear the scene before filling it again
-   var endcounter = scene.children.length-1;
-      for (var i = endcounter; i >= 0; i--){
-         if (scene.children[i].type== 'event'){
-           scene.remove(scene.children[i]);
-         }
-   }
 
     var currentTime = new Date();
     //currentTime = currentTime.getTime() -  currentTime.getTime() / 1000;
     currentTime = (currentTime.getTime()-56000);
     var teller = 0;
+
+    const myNode = document.getElementById("myeventblock");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+
+
+        eventnum.innerHTML = 0
+
+
     for ( var i = 0; i < eventinfo.length; i += 9 ) {
 
 
@@ -64,7 +67,7 @@ function loadevents() {
            eventinfo[i+4] = 2 ;
            teller +=1;
            //eventinfo[j+3] = 5 + (i*3);
-
+            eventnum.innerHTML = teller;
 
            element.addEventListener( 'click', function (event) {
             var xhttp = new XMLHttpRequest();
@@ -158,75 +161,54 @@ function loadevents() {
         object.position.x = ( eventinfo[ i + 3 ] * 140 ) - 1360;
         object.position.y = - ( eventinfo[ i + 4 ] * 180 ) + 670;
 
-        object.type = 'event';
-        scene.add( object );
 
-        objects.push( object );
+
+            //if (eventinfo[ i + 7 ] =='Killing') {
+            //    $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/killed.png" /> Scheduled').appendTo('#myeventblock');
+                //$('<button type="button" class="btn btn-xl btn-block btn-sf2t push-10" onclick="selectItem(this.innerText)">').text('Scheduled').appendTo('#myeventblock');
+           // } else {
+            //    $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/scheduled.png" /> Scheduled').appendTo('#myeventblock');
+                //$('<button type="button" class="btn btn-xl btn-block btn-sf2t push-10" onclick="selectItem(this.innerText)">').text('Pulling').appendTo('#myeventblock');
+
+                //$('<div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="100"><div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div></div>).appendTo('#myeventblock');
+           // }
+
+
         if (eventinfo[ i + 7 ] =='Killing') {
-          var objecticon = new THREE.CSS3DSprite(image2.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/killed.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Pulled') {
-          var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/pulled.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Pulling') {
-          var objecticon = new THREE.CSS3DSprite(image4.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/pulling.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Created') {
-          var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/created.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Started') {
-          var objecticon = new THREE.CSS3DSprite(image5.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/started.png" /> Scheduled').appendTo('#myeventblock');
         }
 
-
         if (eventinfo[ i + 7 ] =='Failed') {
-          var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/failed.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Unhealthy') {
-          var objecticon = new THREE.CSS3DSprite(image3.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/failed2.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='Scheduled') {
-          var objecticon = new THREE.CSS3DSprite(image6.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/failed2.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='SuccessfulCreate') {
-          var objecticon = new THREE.CSS3DSprite(image7.cloneNode());
-          objecticon.position.set(object.position.x+165,object.position.y-35,0);
-          objecticon.type = 'event';
-          scene.add(objecticon);
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/succesful.png" /> Scheduled').appendTo('#myeventblock');
         }
-
-
 
     }
     }

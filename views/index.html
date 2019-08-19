@@ -5,11 +5,11 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Ares Dashboard</title>
+        <title>Kuberntes-Stellar</title>
 
-        <meta name="description" content="A futuristic dashboard by pixelcave. You can download it from https://pixelcave.com">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
+        <meta name="description" content="A futuristic kubernetes dashboard">
+        <meta name="author" content="Rene Schoonrok">
+        <meta name="robots" content="">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
         <!-- Favicons (just the basics for now, check out http://realfavicongenerator.net/ for all available) -->
@@ -38,22 +38,24 @@
                     <div class="text-success animated infinite pulse pull-right">[CONNECTED]</div>
                 </div>
                 <h1 class="h3 font-w200">
-                    <span class="text-crystal">//</span> <a class="link-sf font-w300" href="index.html">KUBERNETES_DASHBOARD</a>
+                    <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://github.com/reneschoonrok/Kubernetes-stellar">KUBERNETES-STELLAR</a>
                 </h1>
 
 
-
-                <label for="box" style = "font-size:16px;">Namespace select:</label>
-                <div class="box" >
-                    <select id="selectnamespace" onchange="changenamespace(this);">
-                        <option>dev</option>
-                        <option>kube-system</option>
-                        <option>tst</option>
-                        <option>default</option>
-                        <option>custom</option>
-                    </select>
+                <div class="col-xs-1 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                    <label for="box" style = "font-size:16px;">Namespace:</label>
                 </div>
-
+                <div class="col-xs-1 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                  <div class="box" >
+                        <select id="selectnamespace" onchange="changenamespace(this);">
+                            <option>dev</option>
+                            <option>kube-system</option>
+                            <option>tst</option>
+                            <option>default</option>
+                            <option>custom</option>
+                        </select>
+                    </div>
+                </div>
 
             </header>
             <!-- END Header -->
@@ -90,43 +92,68 @@
 
                                 <span class="text-crystal" id="logoword">kubernetes</span>
                             </span>
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
-                            <hr class="hc1">
+                            <hr class="hc1"> <hr class="hc1"> <hr class="hc1">
+                            <hr class="hc1"> <hr class="hc1"> <hr class="hc1">
+                            <hr class="hc1"> <hr class="hc1"> <hr class="hc1">
+                            <hr class="hc1"> <hr class="hc1"> <hr class="hc1">
                             <hr class="hc1">
                         <div class="row">
                             <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail1">DATA_DRIVE</button>
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail1">Select a pod to get details..</button>
                             </div>
                             <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail2">PO_DATABASE</button>
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail2"></button>
                             </div>
                             <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail3">ACTIVE_ROUTE</button>
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail3"></button>
                             </div>
                             <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail4">AUTO_PILOT</button>
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail4"></button>
                             </div>
-                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail5">AUTO_PILOT</button>
+                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetailx5"></button>
                             </div>
-                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail6">AUTO_PILOT</button>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2t push-10" id="podinfodetail5"></button>
                             </div>
-                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail7">AUTO_PILOT</button>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2f push-10" id="podinfodetail5f"></button>
                             </div>
+                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetailx6"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2t push-10" id="podinfodetail6"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2f push-10" id="podinfodetail6f"></button>
+                            </div>
+                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetailx7"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2t push-10" id="podinfodetail7"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2f push-10" id="podinfodetail7f"></button>
+                            </div>
+                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetailx8"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2t push-10" id="podinfodetail8"></button>
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2f push-10" id="podinfodetail8f"></button>
+                            </div>
+
                             <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail8">AUTO_PILOT</button>
+                                <button class="btn btn-xl btn-block btn-sf3 push-10" id="podinfodetail10">Pod logs</button>
+                            </div>
+
+
+                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <textarea class="btn btn-xl btn-block btn-sf3 push-10" id="areatext" rows="15" cols="110" class="button6" style="resize:none" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -134,12 +161,14 @@
                     </div>
                     <!-- END Animated Circles Column -->
 
+
+
                     <!-- Left Column -->
                     <div class="col-sm-6 col-lg-3 col-lg-pull-6">
                         <!-- Environment -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Environment</h2>
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Namespace Pods</h2>
                             </div>
                             <div class="block-content" id="myblock">
                                 <div class="row items-push overflow-hidden">
@@ -182,45 +211,45 @@
                         <!-- Planets -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Planets</h2>
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Ingress</h2>
                             </div>
                             <div class="block-content">
                                 <div class="row items-push overflow-hidden">
-                                    <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="20" data-size="45" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#c07635">
-                                            <span class="font-s16 font-w600"></span>
+                                       <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                            <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="20" data-size="45" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#c07635">
+                                                <span class="font-s16 font-w600"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="400">
+                                            <div class="text-uppercase font-w600 text-white-op">Nginx</div>
+                                            <div class="font-s36 font-w300">1 <span class="font-s16 font-w400 text-crystal">.</span></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="400">
-                                        <div class="text-uppercase font-w600 text-white-op">Mars</div>
-                                        <div class="font-s36 font-w300">1.67 <span class="font-s16 font-w400 text-crystal">L.Y.</span></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push overflow-hidden">
-                                    <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="200">
-                                        <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="22" data-size="50" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#3673cc">
-                                            <span class="font-s16 font-w600"></span>
+                                    <div class="row items-push overflow-hidden">
+                                        <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="200">
+                                            <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="22" data-size="50" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#3673cc">
+                                                <span class="font-s16 font-w600"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">
+                                            <div class="text-uppercase font-w600 text-white-op">Nginx</div>
+                                            <div class="font-s36 font-w300">1 <span class="font-s16 font-w400 text-crystal">.</span></div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">
-                                        <div class="text-uppercase font-w600 text-white-op">Earth</div>
-                                        <div class="font-s36 font-w300">1.62 <span class="font-s16 font-w400 text-crystal">L.Y.</span></div>
-                                    </div>
-                                </div>
-                                <div class="row items-push overflow-hidden">
-                                    <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="300">
-                                        <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="30" data-size="70" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#f7c880">
-                                            <span class="font-s16 font-w600"></span>
+                                    <div class="row items-push overflow-hidden">
+                                        <div class="col-xs-4 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="300">
+                                            <div class="js-pie-chart pie-chart" data-percent="100" data-line-width="30" data-size="70" data-bar-color="rgba(255, 255, 255, .2)" data-track-color="#f7c880">
+                                                <span class="font-s16 font-w600"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="600">
-                                        <div class="text-uppercase font-w600 text-white-op">Saturn</div>
-                                        <div class="font-s36 font-w300">2.22 <span class="font-s16 font-w400 text-crystal">L.Y.</span></div>
+                                        <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="600">
+                                            <div class="text-uppercase font-w600 text-white-op">AWS ALB</div>
+                                            <div class="font-s36 font-w300">1 <span class="font-s16 font-w400 text-crystal">.</span></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- END Planets -->
+                            <!-- END Planets -->
                     </div>
                     <!-- END Left Column -->
 
@@ -229,26 +258,60 @@
                         <!-- HQ_COMS -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Pods</h2>
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Resources</h2>
                             </div>
                             <div class="block-content overflow-hidden">
                                 <div class="row items-push">
                                     <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
-                                        <div class="font-s24 font-w300 text-white-op">Pods [<span class="text-success" id="podnum">40</span>]</div>
+                                        <div class="font-s24 font-w300 text-white-op">Pods [<span class="text-success" id="podnum">0</span>]</div>
                                     </div>
                                     <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
-                                        <div class="font-s24 font-w300 text-white-op">Ingress [<span class="text-success">60</span>]</div>
+                                        <div class="font-s24 font-w300 text-white-op">Ingress [<span class="text-success">0</span>]</div>
                                     </div>
                                     <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
-                                        <div class="font-s24 font-w300 text-white-op">Deployments [<span class="text-success">80</span>]</div>
+                                        <div class="font-s24 font-w300 text-white-op">Deployments [<span class="text-success">0</span>]</div>
                                     </div>
                                     <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
-                                        <div class="font-s24 font-w300 text-white-op"> Recent events[<span class="text-success">90</span>]</div>
+                                        <div class="font-s24 font-w300 text-white-op"> Recent events[<span class="text-success" id="eventnum">0</span>]</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- END HQ_COMS -->
+
+
+
+                        <!-- DATA_STREAM -->
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">EVENT_STREAM</h2>
+                            </div>
+                            <div class="block-content" id="myeventblock">
+                                <div class="row items-push">
+
+                                    <!--<div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="100">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="1100">
+                                        <div class="tooltip"><span class="tooltiptext">wowee</span><img src="/img/scheduled.png" /> Scheduled</div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END DATA_STREAM -->
 
                         <!-- POS_TRACKING -->
                         <div class="block">
@@ -275,42 +338,6 @@
                             </div>
                         </div>
                         <!-- END POS_TRACKING -->
-
-                        <!-- DATA_STREAM -->
-                        <div class="block">
-                            <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">DATA_STREAM</h2>
-                            </div>
-                            <div class="block-content">
-                                <div class="row items-push">
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="100">
-                                        <div class="font-s12 text-white-op">AT1</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="148" data-speed="4000"></div>
-                                    </div>
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
-                                        <div class="font-s12 text-white-op">SR1</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="30" data-speed="4000"></div>
-                                    </div>
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
-                                        <div class="font-s12 text-white-op">AF1</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="123" data-speed="4000"></div>
-                                    </div>
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
-                                        <div class="font-s12 text-white-op">AT2</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="180" data-speed="4000"></div>
-                                    </div>
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
-                                        <div class="font-s12 text-white-op">SR2</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="680" data-speed="4000"></div>
-                                    </div>
-                                    <div class="col-xs-4 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="1100">
-                                        <div class="font-s12 text-white-op">AF2</div>
-                                        <div class="font-s18 text-success" data-toggle="countTo" data-to="15" data-speed="4000"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END DATA_STREAM -->
                     </div>
                     <!-- END Right Column -->
                 </div>
@@ -319,7 +346,7 @@
                 <!-- Page Footer -->
                 <div class="block">
                     <div class="block-content block-content-full font-s12 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="1000">
-                        2016 &copy; Crafted with <span class="text-danger">&hearts;</span> by <a class="link-sf" href="https://pixelcave.com/">pixelcave</a>
+                        2019 &copy; Build by Rene Schoonrok. <a class="link-sf" href="https://github.com/reneschoonrok/">Github</a> CSS/Web layout by <a class="link-sf" href="https://pixelcave.com/">Pixelcave</a>
                     </div>
                 </div>
                 <!-- END Page Footer -->
@@ -341,6 +368,7 @@
         <script src="js/three.js"></script>
         <script src="js/TrackballControls.js"></script>
         <script src="js/CSS3DRenderer.js"></script>
+        <script src="js/events.js"></script>
 
         <!-- Page JS Code -->
         <script>
@@ -348,9 +376,11 @@
                 //alert(element.options[element.selectedIndex].text)
                 mynamespace =element.options[element.selectedIndex].text;
             }
-            var mynamespace = 'default';
+            var mynamespace = 'dev';
             var podinfo = [];
+            var eventinfo = [];
             var selecteditem = "";
+            var myauthtoken = "yesyes";
             jQuery(function(){
                 // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
                 Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
@@ -369,7 +399,7 @@
                 selecteditem = itemtext;
             }
 
-            var intervalID = window.setInterval(myRefresh, 2000);
+            var intervalID = window.setInterval(myRefresh, 1500);
 
             function myRefresh() {
 
@@ -381,10 +411,23 @@
                 //eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(poddetails, 2000);
+            var intervalID = window.setInterval(poddetails, 1700);
 
             function poddetails() {
                 loadpoddetails();
+            }
+
+            var intervalID = window.setInterval(logdetails, 1600);
+
+            function logdetails() {
+                loadlogdetails();
+            }
+
+            var intervalID = window.setInterval(eventdetails, 1600);
+
+            function eventdetails() {
+                loadevents();
+                eventinfo.splice(0, eventinfo.length)
             }
 
         </script>
