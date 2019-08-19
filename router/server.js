@@ -235,7 +235,7 @@ var server = app.listen(80, function () {
     var port = server.address().port
     envtoken = process.env.TOKEN
     //console.log(envtoken)
-    console.log('Kubernetes-3d-vizualizer  listening at http://%s:%s', host, port);
+    console.log('Kubernetes-stellar  listening at http://%s:%s', host, port);
 
 });
 
