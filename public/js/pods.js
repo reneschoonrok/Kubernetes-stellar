@@ -159,6 +159,9 @@ function loadinfo() {
         element.appendChild( symbol );
         //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(this.innerText)">').text(podinfo[i]).appendTo('#myblock');
         if ( number.textContent == "-Ready: true") {
+
+            $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i + 1]+'</span><img src="/img/small.jpg" />').appendTo('#myblock');
+
             $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
         } else {
             $('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');

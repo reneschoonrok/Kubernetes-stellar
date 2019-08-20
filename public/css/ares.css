@@ -86,6 +86,7 @@ a.link-sf:active:before {
 
 /* Tooltip text */
 .tooltip .tooltiptext {
+    display: inline-block;
     visibility: hidden;
     width: 120px;
     background-color: black;
@@ -157,15 +158,17 @@ a.link-sf:active:before {
 }
 
 .btn.btn-xl {
-    padding: 10px 12px;
+    padding: 8px 8px;
 }
 
 .btn.btn-sf {
+    height: 20px;
+    width: 100px;
     text-align: left;
     font-weight: 600;
     font-size: 14px;
     color: rgba(43, 193, 110, 1);
-    border: 2px solid rgba(255, 255, 255, .25);
+    /*border: 2px solid rgba(255, 255, 255, .25);*/
     border-left-width: 4px;
     border-right-width: 4px;
     background: transparent;
@@ -174,13 +177,13 @@ a.link-sf:active:before {
 .btn.btn-sf:hover,
 .btn.btn-sf:focus {
     color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, 1);
+    /*border-color: rgba(255, 255, 255, 1);*/
     outline: 0;
 }
 
 .btn.btn-sf:active {
     color: #fff;
-    border-color: #fff;
+    /*border-color: #fff;*/
     background: rgba(255, 255, 255, .15);
 }
 
@@ -189,7 +192,7 @@ a.link-sf:active:before {
     font-weight: 600;
     font-size: 14px;
     color: rgba(255, 7, 9, 0.75);
-    border: 2px solid rgba(255, 255, 255, .25);
+    border: 2px solid rgba(255, 7, 9, 0.75);
     border-left-width: 4px;
     border-right-width: 4px;
     background: transparent;
@@ -405,7 +408,7 @@ background-color: rgba(98, 208, 240, .1);
 
 .block-content {
     margin: 0 auto;
-    padding: 20px 20px 1px;
+    padding: 10px 10px 1px;
     max-width: 100%;
     overflow-x: visible;
 }
