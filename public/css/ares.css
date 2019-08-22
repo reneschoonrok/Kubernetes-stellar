@@ -31,6 +31,11 @@ a {
     transition: color .15s ease-out;
 }
 
+p {
+    color: #000000;
+    background: transparent;
+}
+
 
 
 a:hover,

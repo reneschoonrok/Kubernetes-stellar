@@ -16,7 +16,7 @@ function loadinfo() {
     var response3 = jsonPath(response , "$..status.containerStatuses[0].restartCount");
     var response4 = jsonPath(response , "$..status.containerStatuses[0].ready");
     var response5 = jsonPath(response , "$..spec.containers[0].image");
-    var response6 = jsonPath(response , "$..status.startTime");
+    var response6 = jsonPath(response , "$..metadata.ownerReferences[0].kind");
     var response7 = jsonPath(response , "$..metadata.name");
     var response8 = jsonPath(response , "$..status.phase");
     //console.log(response7);
@@ -26,7 +26,7 @@ function loadinfo() {
     for (var i = 0; i < arrayLength; i++) {
         podinfo[j] = response1[i];
         podinfo[j+1] = "-Restarts: " + response3[i];
-        podinfo[j+2] = "rgba(147, 232, 44,0.10)"; //pod background color
+        podinfo[j+2] = response6[i]; //Job of ReplicaSet
 
         if (i < 6) {
           podinfo[j+3] = 5 + (i*3);
@@ -172,9 +172,15 @@ function loadinfo() {
             //$('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
 
             $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
-            $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
+            if (podinfo[i+2]=='Job') {
+                $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/job.png" /> Scheduled').appendTo('#myblock');
+                $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+            } else
+            {
+                $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
+                $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+            }
 
-            $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
 
             //$(' <span class="font-s16 font-w600"></span></div></div>').text( podinfo[ i + 8]).appendTo('#myblock');
 
