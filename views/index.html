@@ -42,6 +42,16 @@
                 </h1>
 
 
+                <p><label for="box" style = "font-size:14px; color: white">Custom Namespace:</label> <input type="text" class="btn-sf" id="customnamespace" placeholder="custom" onchange="changenamespacecustom(this);">
+                    <button type="button" onclick="sendToken()">Submit token to see logs (click)</button> <input type="password" id="mytoken" placeholder="enter token">
+                  </p>
+                <script>
+                    function sendToken() {
+                        myauthtoken = document.getElementById('mytoken').value;
+                    }
+                </script>
+
+
                 <div class="col-xs-1 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
                     <label for="box" style = "font-size:16px;">Namespace:</label>
                 </div>
@@ -54,8 +64,9 @@
                             <option>default</option>
                             <option>custom</option>
                         </select>
-                    </div>
+
                 </div>
+                   </div>
 
             </header>
             <!-- END Header -->
@@ -147,6 +158,22 @@
                                 <button class="btn btn-xl btn-block btn-sf2f push-10" id="podinfodetail8f"></button>
                             </div>
 
+
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail11"></button>
+                            </div>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail12"></button>
+                            </div>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail13"></button>
+                            </div>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail14"></button>
+                            </div>
+                            <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail15"></button>
+                            </div>
                             <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
                                 <button class="btn btn-xl btn-block btn-sf3 push-10" id="podinfodetail10">Pod logs</button>
                             </div>
@@ -182,6 +209,7 @@
                         <div class="block">
                             <div class="block-header overflow-hidden">
                                 <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Ingress</h2>
+                                <input type="checkbox" id="https-ingress" value="true" class="button button4" checked>use https alb - click ingress to open url
                             </div>
                             <div class="block-content"  id="myingressblock">
                                 <div class="row items-push overflow-hidden">
@@ -196,26 +224,6 @@
                                 </div>
                             </div>
                             <!-- END Ingress -->
-
-                        <!-- Volumes -->
-
-                        <div class="block">
-                            <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Volumes</h2>
-                            </div>
-                            <div class="block-content"  id="myvolumesblock">
-                                <div class="row items-push overflow-hidden">
-
-                                </div>
-                                <div class="row items-push overflow-hidden">
-
-                                </div>
-                                <div class="row items-push overflow-hidden">
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END Planets -->
 
                     </div>
                     <!-- END Left Column -->
@@ -279,7 +287,25 @@
                             </div>
                         </div>
                         <!-- END DATA_STREAM -->
+                        <!-- Volumes -->
 
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Volumes</h2>
+                            </div>
+                            <div class="block-content"  id="myvolumesblock">
+                                <div class="row items-push overflow-hidden">
+
+                                </div>
+                                <div class="row items-push overflow-hidden">
+
+                                </div>
+                                <div class="row items-push overflow-hidden">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END Planets -->
                         <!-- POS_TRACKING -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
@@ -345,13 +371,18 @@
                 //alert(element.options[element.selectedIndex].text)
                 mynamespace =element.options[element.selectedIndex].text;
             }
+
+            function changenamespacecustom(element) {
+                //alert(element.options[element.selectedIndex].text)
+                mynamespace =element.value;
+            }
             var mynamespace = 'dev';
             var podinfo = [];
             var eventinfo = [];
             var ingressinfo = [];
             var pvcinfo = [];
             var selecteditem = "";
-            var myauthtoken = "yesyes";
+            var myauthtoken = "empty";
             jQuery(function(){
                 // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
                 Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
@@ -359,7 +390,7 @@
             podnum.innerHTML=65
 
 
-            var intervalID = window.setInterval(myNamespaceRefresh, 2000);
+            var intervalID = window.setInterval(myNamespaceRefresh, 5000);
 
             function myNamespaceRefresh() {
                 loadnamespaces();
@@ -388,7 +419,7 @@
                 loadpoddetails();
             }
 
-            var intervalID = window.setInterval(logdetails, 1600);
+            var intervalID = window.setInterval(logdetails, 2500);
 
             function logdetails() {
                 loadlogdetails();
@@ -401,14 +432,14 @@
                 eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(ingressdetails, 1600);
+            var intervalID = window.setInterval(ingressdetails, 5000);
 
             function ingressdetails() {
                 loadingresses();
                 ingressinfo.splice(0, ingressinfo.length)
             }
 
-            var intervalID = window.setInterval(pvcdetails, 1600);
+            var intervalID = window.setInterval(pvcdetails, 5000);
 
             function pvcdetails() {
                 loadpvc();

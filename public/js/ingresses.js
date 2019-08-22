@@ -23,7 +23,14 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     var j = 0;
     for (var i = 0; i < arrayLength; i++) {
         ingressinfo[j] = response1[i];
-        ingressinfo[j+1] = response2[i];
+
+        const myhttps = document.getElementById("https-ingress");
+        if (myhttps.checked==true) {
+            ingressinfo[j+1] = 'https://'+response2[i];
+        } else {
+            ingressinfo[j+1] = 'http://'+response2[i];
+        };
+
         ingressinfo[j+2] = "rgba(237, 149, 61,0.2)"; //background of ingressinfos
 
 
@@ -67,7 +74,8 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
                     var response = JSON.parse(xhttp.responseText);
                     //console.log(response);
                     info[0] = "http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/" + jsonPath(response , "$.metadata.name");
-                    if (httpsingress.checked){
+                    const myhttps = document.getElementById("https-ingress");
+                    if (myhttps.checked==true) {
                        info[1] = "https://"+jsonPath(response , '$..spec.rules[0].host');
                     } else {
                        info[1] = "http://"+jsonPath(response , '$..spec.rules[0].host');
@@ -141,7 +149,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         details.appendChild(ingressreplicaname)
 
         details.className = 'ingressdetails';
-        details.innerHTML = ingressinfo[ i + 1 ];
+        details.innerHTML = 'https://' +ingressinfo[ i + 1 ];
         details.align = ingressinfo[ i + 6 ];
         details.title = ingressinfo[ i + 7 ];
         details.id = ingressinfo[ i + 8 ];
@@ -166,7 +174,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         $('<div class="tooltip"><span class="tooltiptext">'+ingressinfo[i]+'</span><img src="/img/ingressslow.gif" /> Scheduled').appendTo('#myingressblock');
 
 
-        $(' <span class="font-s16 font-w600"></span></div></div>').text( ingressinfo[ i + 1]).appendTo('#myingressblock');
+        $(' <span class="font-s14 font-w400" onclick="window.open(this.innerText)"></span></div></div>').text( ingressinfo[ i + 1]).appendTo('#myingressblock');
 
     
 

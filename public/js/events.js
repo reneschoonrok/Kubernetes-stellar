@@ -25,7 +25,7 @@ function loadevents() {
     var j = 0;
     for (var i = 0; i < arrayLength; i++) {
         eventinfo[j] = response1[i];
-        eventinfo[j+1] = "-Message: " + response3[i];
+        eventinfo[j+1] = response4[i]+': ' + response3[i];
         eventinfo[j+2] = "rgba(67, 114,183,0.2)"; //background of replicasets
         eventinfo[j+5] = response2[i];
         eventinfo[j+6] = "-Image: " + response5[i];
@@ -203,7 +203,7 @@ function loadevents() {
         }
 
         if (eventinfo[ i + 7 ] =='Scheduled') {
-            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/failed2.png" /> Scheduled').appendTo('#myeventblock');
+            $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/scheduled.png" /> Scheduled').appendTo('#myeventblock');
         }
 
         if (eventinfo[ i + 7 ] =='SuccessfulCreate') {

@@ -22,6 +22,11 @@ function loadpoddetails() {
                 podinfodetail3.innerHTML ='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
                 //podinfodetail2.innerHTML ='Containers #    : ' + response5.length+ "\r\n";
                 podinfodetail2.innerHTML='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
+                podinfodetail11.innerHTML='Cont. ports: ' +  jsonPath(response , "$..spec.containers[*].ports[*].containerPort")+ "\r\n";
+                podinfodetail12.innerHTML='cpu requests: ' + jsonPath(response , "$..spec.containers[0].resources.requests.cpu")+ "\r\n";
+                podinfodetail13.innerHTML='mem requests: ' + jsonPath(response , "$..spec.containers[0].resources.requests.memory")+ "\r\n";
+                podinfodetail14.innerHTML='cpu limits: ' + jsonPath(response , "$..spec.containers[0].resources.limits.cpu")+ "\r\n";
+                podinfodetail15.innerHTML='mem limits: ' + jsonPath(response , "$..spec.containers[0].resources.limits.memory")+ "\r\n";
 
                 podinfodetail5.innerHTML = "";
                 podinfodetail5f.innerHTML = "";

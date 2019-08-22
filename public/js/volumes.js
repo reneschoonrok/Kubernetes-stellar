@@ -23,7 +23,7 @@ function loadpvc() { //http://localhost:8001/apis/extensions/v1beta1/namespaces/
     var j = 0;
     for (var i = 0; i < arrayLength; i++) {
         pvcinfo[j] = response1[i];
-        pvcinfo[j+1] = "-Url: " + response2[i];
+        pvcinfo[j+1] = response2[i];
         pvcinfo[j+2] = "rgba(237, 149, 61,0.2)"; //background of ingressinfos
 
 
