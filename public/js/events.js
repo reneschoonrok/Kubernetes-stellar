@@ -41,7 +41,7 @@ function loadevents() {
 
     var currentTime = new Date();
     //currentTime = currentTime.getTime() -  currentTime.getTime() / 1000;
-    currentTime = (currentTime.getTime()-56000);
+    currentTime = (currentTime.getTime()-86000);
     var teller = 0;
 
     const myNode = document.getElementById("myeventblock");

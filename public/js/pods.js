@@ -159,9 +159,25 @@ function loadinfo() {
         element.appendChild( symbol );
         //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(this.innerText)">').text(podinfo[i]).appendTo('#myblock');
         if ( number.textContent == "-Ready: true") {
-            $('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
+            $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
+            $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/podoksmall.gif" /> Scheduled').appendTo('#myblock');
+
+            $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+
+            //$(' <span class="font-s16 font-w600"></span></div></div>').text( podinfo[ i + 8]).appendTo('#myblock');
+
+
+            //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
         } else {
-            $('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
+            //$('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
+
+            $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
+            $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
+
+            $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+
+            //$(' <span class="font-s16 font-w600"></span></div></div>').text( podinfo[ i + 8]).appendTo('#myblock');
+
         }
         var details = document.createElement( 'div' );
         details.className = 'restarts';

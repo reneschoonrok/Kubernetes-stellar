@@ -23,7 +23,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     var j = 0;
     for (var i = 0; i < arrayLength; i++) {
         ingressinfo[j] = response1[i];
-        ingressinfo[j+1] = "-Url: " + response2[i];
+        ingressinfo[j+1] = response2[i];
         ingressinfo[j+2] = "rgba(237, 149, 61,0.2)"; //background of ingressinfos
 
 
@@ -41,20 +41,17 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
     //console.log(ingressinfo);
   }
 };
-   //clear the scene before filling it again
-   var endcounter = scene.children.length-1;
-      for (var i = endcounter; i >= 0; i--){
-         if (scene.children[i].type== 'ingress'){
-           scene.remove(scene.children[i]);
-         }
-   }
 
-   for (var i = sceneGl.children.length-1; i > -1; i -= 1){
-      if (sceneGl.children[i].type== 'Glingress'){
-         sceneGl.remove(sceneGl.children[i]);
-      }
+    if (ingressinfo.length > 8) {
+        ingressnum.innerHTML = ingressinfo.length / 9
+    } else {
+        ingressnum.innerHTML = 0
+    }
 
-   }
+    const myNode = document.getElementById("myingressblock");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
 
     for ( var i = 0; i < ingressinfo.length; i += 9 ) {
 
@@ -80,7 +77,7 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
 
                     areatext1.value= '';
                     areatext1.value+='Ingressname     : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
-                    areatext1.value+='Url             : ' + jsonPath(response , '$..spec.rules[0].host')+ "\r\n";
+                    areatext1.value+= jsonPath(response , '$..spec.rules[0].host')+ "\r\n";
                     //areatext1.value+='Scheme          : ' + jsonPath(response , "$.metadata.annotations[2]")+ "\r\n";
                     //areatext1.value+='Target-type     : ' + jsonPath(response , "$.metadata.annotations[3]")+ "\r\n";
                     //areatext1.value+='ingress class   : ' + jsonPath(response , "$.metadata.annotations[4]")+ "\r\n";
@@ -161,20 +158,29 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         ingressstatus.className = 'ingressbad';
         if ( ingressstatus.textContent == "-ingressstatus: Running") { ingressstatus.className = 'ingressgood';};
         element.appendChild( ingressstatus );
+            //$('<div class="tooltip"><span class="tooltiptext">'+podinfo[i + 1]+'</span><img src="/img/small.jpg" />').appendTo('#myblock');
+            //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text( ingressinfo[ i + 1]).appendTo('#myingressblock');
 
-        var object = new THREE.CSS3DObject( element );
-        object.position.x = ( ingressinfo[ i + 3 ] * 140 ) - 1360;
-        object.position.y = - ( ingressinfo[ i + 4 ] * 180 ) + 1080;
-        object.type= 'ingress'
 
-        scene.add( object );
+        $('<div class="row items-push overflow-hidden">').appendTo('#myingressblock');
+        $('<div class="tooltip"><span class="tooltiptext">'+ingressinfo[i]+'</span><img src="/img/ingressslow.gif" /> Scheduled').appendTo('#myingressblock');
 
-        objects.push( object );
 
-        var runner = new THREE.Mesh(runnerGeometry, runnerMaterial);
-        runner.position.set(object.position.x+140,object.position.y-35,0);
-        runner.type='Glingress';
-        sceneGl.add(runner);
+        $(' <span class="font-s16 font-w600"></span></div></div>').text( ingressinfo[ i + 1]).appendTo('#myingressblock');
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
