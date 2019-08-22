@@ -164,6 +164,7 @@ a.link-sf:active:before {
 .btn.btn-sf {
     height: 20px;
     width: 100px;
+    padding-top: 0px;
     text-align: left;
     font-weight: 600;
     font-size: 14px;
@@ -189,10 +190,11 @@ a.link-sf:active:before {
 
 .btn.btn-sf-nok {
     text-align: left;
+    padding-top: 0px;
     font-weight: 600;
     font-size: 14px;
     color: rgba(255, 7, 9, 0.75);
-    border: 2px solid rgba(255, 7, 9, 0.75);
+    /*border: 2px solid rgba(255, 7, 9, 0.75);*/
     border-left-width: 4px;
     border-right-width: 4px;
     background: transparent;
@@ -348,7 +350,7 @@ background-color: rgba(98, 208, 240, .1);
 }
 
 #page-container.modern-sf:before {
-    background-color: rgba(0, 22, 41, .75);
+    background-color: rgba(0, 22, 41, .50);
 }
 
 #page-container.vintage-sf:before {

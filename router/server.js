@@ -125,6 +125,17 @@ async function getevents (namespace_name) {
     }
 }
 
+async function getpvc (namespace_name) {
+    try {
+        //console.log(namespace_name);
+        //"http://localhost:8001/apis/extensions/v1beta1/namespaces/"+mynamespace+"/ingresses/",
+        let mypvc = await client.api.v1.namespaces(namespace_name).persistentvolumeclaims.get()
+        return(mypvc);
+    } catch (err) {
+        console.error('Error: ', err)
+    }
+}
+
 
 app.get('/', function (req, res) {
     res.render('../views/index.html');
@@ -206,6 +217,17 @@ app.get("/myevents", function(httpRequest, httpResponse, next){
     var myevents = getevents(namespace_name)
 
     myevents.then(function(result) {
+        //console.log(result)
+        httpResponse.send(result);
+    });
+});
+
+
+app.get("/mypvc", function(httpRequest, httpResponse, next){
+    var namespace_name =httpRequest.query.mynamespace;
+    var mypvc = getpvc(namespace_name)
+
+    mypvc.then(function(result) {
         //console.log(result)
         httpResponse.send(result);
     });

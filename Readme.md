@@ -13,7 +13,7 @@ Make sure the pod has enough rights to read other pods and query kube-apiserver 
 <br/>
 Also working with Minikube. <br/>
 <br/>
-![](/k8sstellar.gif)
+![](/stellar1.gif)
 <br/>
 ## Prerequisites <br/>
 Get up and running with included yamls: <br/>
@@ -24,7 +24,7 @@ minikube service kubernetes-stellar <br/>
 This should open your browser and the page will show. <br/>
 <br/>
 Without yamls files: <br/>
-kubectl create deployment kubernetes-stellar --image=reneschoonrok/kubernetes-3d-visualizer:latest <br/>
+kubectl create deployment kubernetes-stellar --image=reneschoonrok/kubernetes-stellar:latest <br/>
 kubectl expose deployment kubernetes-stellar --type=LoadBalancer --port=80 <br/>
 minikube service kubernetes-stellar <br/>
 <br/>
