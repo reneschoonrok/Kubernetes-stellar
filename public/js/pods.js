@@ -1,7 +1,7 @@
 function loadinfo() {
 
   var xhttp = new XMLHttpRequest();
-    console.log(document.getElementById("selectnamespace").value);
+    //console.log(document.getElementById("selectnamespace").value);
     // var mynamespace2=document.getElementById("selectnamespace").value;
   xhttp.open('GET', '/pods?mynamespace='+mynamespace, true);
   //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/", true);
