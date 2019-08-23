@@ -390,7 +390,7 @@
             podnum.innerHTML=65
 
 
-            var intervalID = window.setInterval(myNamespaceRefresh, 5000);
+            var intervalID = window.setInterval(myNamespaceRefresh, 10000);
 
             function myNamespaceRefresh() {
                 loadnamespaces();
@@ -401,7 +401,7 @@
                 selecteditem = itemtext;
             }
 
-            var intervalID = window.setInterval(myRefresh, 1500);
+            var intervalID = window.setInterval(myRefresh, 5000);
 
             function myRefresh() {
 
@@ -413,33 +413,33 @@
                 //eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(poddetails, 1700);
+            var intervalID = window.setInterval(poddetails, 5100);
 
             function poddetails() {
                 loadpoddetails();
             }
 
-            var intervalID = window.setInterval(logdetails, 2500);
+            var intervalID = window.setInterval(logdetails, 5200);
 
             function logdetails() {
                 loadlogdetails();
             }
 
-            var intervalID = window.setInterval(eventdetails, 1600);
+            var intervalID = window.setInterval(eventdetails, 3000);
 
             function eventdetails() {
                 loadevents();
                 eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(ingressdetails, 5000);
+            var intervalID = window.setInterval(ingressdetails, 5600);
 
             function ingressdetails() {
                 loadingresses();
                 ingressinfo.splice(0, ingressinfo.length)
             }
 
-            var intervalID = window.setInterval(pvcdetails, 5000);
+            var intervalID = window.setInterval(pvcdetails, 9400);
 
             function pvcdetails() {
                 loadpvc();
