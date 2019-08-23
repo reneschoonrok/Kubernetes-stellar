@@ -358,9 +358,6 @@
         <script src="js/pods.js"></script>
         <script src="js/poddetails.js"></script>
         <script src="js/namespaces.js"></script>
-        <script src="js/three.js"></script>
-        <script src="js/TrackballControls.js"></script>
-        <script src="js/CSS3DRenderer.js"></script>
         <script src="js/events.js"></script>
         <script src="js/ingresses.js"></script>
         <script src="js/volumes.js"></script>
@@ -401,49 +398,41 @@
                 selecteditem = itemtext;
             }
 
-            var intervalID = window.setInterval(myRefresh, 5000);
+            var intervalID = window.setInterval(myRefresh, 1900);
 
             function myRefresh() {
-
                 loadinfo();
-                //loadreplicasets();
-                //loadevents();
-                podinfo.splice(0, podinfo.length)
-                //replicaset.splice(0, replicaset.length)
-                //eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(poddetails, 5100);
+            var intervalID = window.setInterval(poddetails, 2200);
 
             function poddetails() {
                 loadpoddetails();
             }
 
-            var intervalID = window.setInterval(logdetails, 5200);
+            var intervalID = window.setInterval(logdetails, 3200);
 
             function logdetails() {
                 loadlogdetails();
             }
 
-            var intervalID = window.setInterval(eventdetails, 3000);
+            var intervalID = window.setInterval(eventdetails, 2000);
 
             function eventdetails() {
                 loadevents();
-                eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(ingressdetails, 5600);
+            var intervalID = window.setInterval(ingressdetails, 6000);
 
             function ingressdetails() {
                 loadingresses();
-                ingressinfo.splice(0, ingressinfo.length)
+
             }
 
-            var intervalID = window.setInterval(pvcdetails, 9400);
+            var intervalID = window.setInterval(pvcdetails, 8000);
 
             function pvcdetails() {
                 loadpvc();
-                pvcinfo.splice(0, pvcinfo.length)
             }
 
         </script>

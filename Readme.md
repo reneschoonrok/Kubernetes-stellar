@@ -13,7 +13,7 @@ Make sure the pod has enough rights to read other pods and query kube-apiserver 
 <br/>
 Also working with Minikube. <br/>
 <br/>
-![](/stellar1.gif)
+![](/stellar2.gif)
 <br/>
 ## Prerequisites <br/>
 Get up and running with included yamls: <br/>
