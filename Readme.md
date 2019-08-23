@@ -38,8 +38,9 @@ See deployment yaml for the TOKEN env var which can give rights to logfiles and 
 <br/>
 <br/>
 ### Credits.. <br/>
-Threejs as this app makes use of: <br/>
-pixelcave for css web design
+ <br/>
+pixelcave for css web design  <br/>
+https://pixelcave.com <br/>
 
 Godaddy kubernetes-client: <br/>
 https://github.com/godaddy/kubernetes-client <br/>
