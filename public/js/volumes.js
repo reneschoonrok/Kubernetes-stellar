@@ -21,6 +21,7 @@ function loadpvc() { //http://localhost:8001/apis/extensions/v1beta1/namespaces/
 
     var arrayLength = response1.length;
     var j = 0;
+    pvcinfo.splice(0, pvcinfo.length)
     for (var i = 0; i < arrayLength; i++) {
         pvcinfo[j] = response1[i];
         pvcinfo[j+1] = response2[i];
@@ -38,117 +39,31 @@ function loadpvc() { //http://localhost:8001/apis/extensions/v1beta1/namespaces/
         pvcinfo[j+8] = response7[i];
         j = j + 9;
     }
-    //console.log(ingressinfo);
+      const myNode = document.getElementById("myvolumesblock");
+      while (myNode.firstChild) {
+          myNode.removeChild(myNode.firstChild);
+      }
+
+
+      if (pvcinfo.length > 8) {
+          volumesnum.innerHTML = pvcinfo.length / 9
+      } else {
+          volumesnum.innerHTML = 0
+      }
+
+      for ( var i = 0; i < pvcinfo.length; i += 9 ) {
+
+          $('<div class="row items-push overflow-hidden">').appendTo('#myvolumesblock');
+          $('<div class="tooltip"><span class="tooltiptext">'+pvcinfo[i + 1]+'</span><img src="/img/pvcslow.gif" /> Scheduled').appendTo('#myvolumesblock');
+
+
+          $(' <span class="font-s16 font-w600"></span></div></div>').text( pvcinfo[ i ]).appendTo('#myvolumesblock');
+
+
+      }
   }
 };
 
-    const myNode = document.getElementById("myvolumesblock");
-    while (myNode.firstChild) {
-        myNode.removeChild(myNode.firstChild);
-    }
 
-
-    if (pvcinfo.length > 8) {
-        volumesnum.innerHTML = pvcinfo.length / 9
-    } else {
-        volumesnum.innerHTML = 0
-    }
-
-    for ( var i = 0; i < pvcinfo.length; i += 9 ) {
-
-        var element = document.createElement( 'div' );
-        element.className = 'element';
-        element.style.backgroundColor = pvcinfo[ i + 2 ];
-
-
-
-
-        var number = document.createElement( 'div' );
-        number.textContent = pvcinfo[ i + 5 ];
-        if ( number.textContent == "-Ready: false") { number.className = 'numberbad';};
-        if ( number.textContent == "-Ready: ") { number.className = 'numbergood';};
-        if ( number.textContent == "-Ready: true") { number.className = 'numberbest';}
-        element.appendChild( number );
-
-
-        var symbol = document.createElement( 'div' );
-        symbol.className = 'symbol';
-        symbol.textContent = pvcinfo[ i ];
-        element.appendChild( symbol );
-
-        var details = document.createElement( 'div' );
-        details.className = 'restarts';
-        var ingressname = document.createElement('ingressname'); // is a node
-
-        details.appendChild(ingressname)
-
-        var myingressrow = document.createElement('myingressrow'); // is a node
-        myingressrow.align = pvcinfo[ i + 3 ];
-        details.appendChild(myingressrow)
-
-        var myingresscolumn = document.createElement('myingresscolumn'); // is a node
-        myingresscolumn.align = pvcinfo[ i + 4 ];
-        details.appendChild(myingresscolumn)
-
-        var imageid = document.createElement('imageid'); // is a node
-        imageid.align = pvcinfo[ i + 6 ];
-        details.appendChild(imageid)
-
-        var startedat = document.createElement('startedat'); // is a node
-        startedat.align = pvcinfo[ i + 7 ];
-        details.appendChild(startedat)
-
-        var xpos = document.createElement('xpos'); // is a node
-        xpos.align = ( pvcinfo[ i + 3 ] * 140 ) - 1230;
-        details.appendChild(xpos)
-
-        var ingressreplicaname = document.createElement('ingressreplicaname'); // is a node
-        ingressreplicaname.align = pvcinfo[ i + 8 ];
-        details.appendChild(ingressreplicaname)
-
-        details.className = 'ingressdetails';
-        details.innerHTML = pvcinfo[ i + 1 ];
-        details.align = pvcinfo[ i + 6 ];
-        details.title = pvcinfo[ i + 7 ];
-        details.id = pvcinfo[ i + 8 ];
-        details.tabIndex = ( pvcinfo[ i + 3 ] * 140 ) - 1230;
-        element.appendChild( details );
-
-        var deletebtn = document.createElement( 'div' );
-        deletebtn.textContent = "Select";
-        deletebtn.className = 'delete';
-        element.appendChild( deletebtn );
-
-        var ingressstatus = document.createElement( 'div' );
-        ingressstatus.textContent = pvcinfo[ i + 7 ];
-        ingressstatus.className = 'ingressbad';
-        if ( ingressstatus.textContent == "-ingressstatus: Running") { ingressstatus.className = 'ingressgood';};
-        element.appendChild( ingressstatus );
-            //$('<div class="tooltip"><span class="tooltiptext">'+podinfo[i + 1]+'</span><img src="/img/small.jpg" />').appendTo('#myblock');
-
-
-        $('<div class="row items-push overflow-hidden">').appendTo('#myvolumesblock');
-        $('<div class="tooltip"><span class="tooltiptext">'+pvcinfo[i + 1]+'</span><img src="/img/pvcslow.gif" /> Scheduled').appendTo('#myvolumesblock');
-
-
-        $(' <span class="font-s16 font-w600"></span></div></div>').text( pvcinfo[ i ]).appendTo('#myvolumesblock');
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
 
 }

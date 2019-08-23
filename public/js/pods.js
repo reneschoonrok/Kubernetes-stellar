@@ -23,6 +23,7 @@ function loadinfo() {
 
     var arrayLength = response1.length;
     var j = 0;
+      podinfo.splice(0, podinfo.length);
     for (var i = 0; i < arrayLength; i++) {
         podinfo[j] = response1[i];
         podinfo[j+1] = "-Restarts: " + response3[i];
@@ -43,258 +44,39 @@ function loadinfo() {
         podinfo[j+8] = response7[i];
         j = j + 9;
     }
-    //console.log(podinfo);
+      const myNode = document.getElementById("myblock");
+      while (myNode.firstChild) {
+          myNode.removeChild(myNode.firstChild);
+
+      }
+      for ( var i = 0; i < podinfo.length; i += 9 ) {
+
+          if ( podinfo[ i + 5 ] == "-Ready: true") {
+              $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
+              $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/podoksmall.gif" /> Scheduled').appendTo('#myblock');
+
+              $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+
+          } else {
+
+              $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
+              if (podinfo[i+2]=='Job') {
+                  $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/job.png" /> Scheduled').appendTo('#myblock');
+                  $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+              } else
+              {
+                  $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
+                  $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+              }
+
+          }
+
+      }
+      if (podinfo.length > 8) {
+          podnum.innerHTML = podinfo.length / 9
+      } else {
+          podnum.innerHTML = 0
+      }
   }
 };
-  //clear the scene before filling it again
-  //var endcounter = scene.children.length-1;
-  //    for (var i = endcounter; i >= 0; i--){
-  //       //if (scene.children[i].type== 'pod'){
-  //         scene.remove(scene.children[i]);
-  //       }
-  // }
-
-  // for (var i = sceneGl.children.length-1; i > -1; i -= 1){
-  //    if (sceneGl.children[i].type== 'Glpod'){
-  //       sceneGl.remove(sceneGl.children[i]);
-  //    }
-
-  // }
-    if (podinfo.length > 8) {
-        podnum.innerHTML = podinfo.length / 9
-    } else {
-        podnum.innerHTML = 0
-    }
-
-    var arrayVariable = ['one','two','three'],
-        arrayLength = arrayVariable.length;
-
-    //for (i = 0; i < arrayLength; i++) {
-    //    $('<div class="results" />').text(arrayVariable[i]).appendTo('body');
-    //    $('<div class="row items-push overflow-hidden" />').text(arrayVariable[i]).appendTo('#myblock');
-    //}
-    const myNode = document.getElementById("myblock");
-    while (myNode.firstChild) {
-        myNode.removeChild(myNode.firstChild);
-    }
-    for ( var i = 0; i < podinfo.length; i += 9 ) {
-
-        var element = document.createElement( 'div' );
-        element.className = 'podelement';
-        element.style.backgroundColor = podinfo[ i + 2 ];
-
-        element.addEventListener( 'click', function (event) {
-             var xhttp = new XMLHttpRequest();
-                        xhttp.open('GET', '/poddetail?mynamespace='+mynamespace+'&mypoddetail='+event.currentTarget.childNodes[2].id, true);
-                        //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
-                        xhttp.send();
-                        xhttp.onreadystatechange = function() {
-                            if (this.readyState == 4 && this.status == 200) {
-                                var response = JSON.parse(xhttp.responseText);
-                                //console.log(response);
-                                info[0] = jsonPath(response , "$..metadata.name");
-
-                                var response5 = jsonPath(response , "$.spec.containers[*].image");
-
-                                areatext1.value= '';
-                                areatext1.value+='Podname         : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
-                                areatext1.value+='Pod IP          : ' + jsonPath(response , "$..status.podIP")+ "\r\n";
-                                areatext1.value+='Podstatus       : ' + jsonPath(response , "$..status.phase")+ "\r\n";
-                                areatext1.value+='Pod starttime   : ' + jsonPath(response , "$..status.startTime")+ "\r\n";
-                                areatext1.value+='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
-                                areatext1.value+='Containers #    : ' + response5.length+ "\r\n";
-                                areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
-                                areatext1.value+='Containers ready: ' + jsonPath(response , "$..status.containerStatuses[*].ready")+ "\r\n";
-                                areatext1.value+='Container ports : ' + jsonPath(response , "$..spec.containers[*].ports[0].containerPort")+ "\r\n";
-                                areatext1.value+='cpu requests    : ' + jsonPath(response , "$..spec.containers[*].resources.requests.cpu")+ "\r\n";
-                                areatext1.value+='memory requests : ' + jsonPath(response , "$..spec.containers[*].resources.requests.memory")+ "\r\n";
-                                areatext1.value+='cpu limits      : ' + jsonPath(response , "$..spec.containers[*].resources.limits.cpu")+ "\r\n";
-                                areatext1.value+='memory limits   : ' + jsonPath(response , "$..spec.containers[*].resources.limits.memory")+ "\r\n";
-
-
-                                //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
-                                //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                                //detail10.innerHTML = 'Open spec';
-                                detail11.innerHTML = 'Delete pod';
-                                detail13.innerHTML = '';
-                                detail14.innerHTML = '';
-                            }
-                        }
-
-        }, false );
-
-        element.addEventListener( 'contextmenu', function (event) {
-                     var xhttp = new XMLHttpRequest();
-                                xhttp.open('GET', '/podlogs?mynamespace='+mynamespace+'&mypoddetail='+event.currentTarget.childNodes[2].id+'&myauthtoken='+myauthtoken, true);
-                                //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
-                                xhttp.send();
-                                xhttp.onreadystatechange = function() {
-                                    if (this.readyState == 4 && this.status == 200) {
-                                        var response = JSON.parse(xhttp.responseText);
-                                        var responsestr = response.body.split("\n");
-                                        for (var i = 0; i < responsestr.length; i++) {
-                                            areatext.value +=responsestr[i];
-                                            areatext.value +="\r\n";
-                                        }
-
-                                        //areatext.value += response
-                                        areatext.scrollTop = areatext.scrollHeight;
-
-
-                                    }
-                                }
-
-                }, false );
-
-        var number = document.createElement( 'div' );
-        number.textContent = podinfo[ i + 5 ];
-        if ( number.textContent == "-Ready: false") { number.className = 'numberbad';};
-        if ( number.textContent == "-Ready: ") { number.className = 'numbergood';};
-        if ( number.textContent == "-Ready: true") { number.className = 'numberbest';}
-        element.appendChild( number );
-
-        var symbol = document.createElement( 'div' );
-        symbol.className = 'symbol';
-        symbol.textContent = podinfo[ i ];
-        element.appendChild( symbol );
-        //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="alert(this.innerText)">').text(podinfo[i]).appendTo('#myblock');
-        if ( number.textContent == "-Ready: true") {
-            $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
-            $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/podoksmall.gif" /> Scheduled').appendTo('#myblock');
-
-            $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
-
-            //$(' <span class="font-s16 font-w600"></span></div></div>').text( podinfo[ i + 8]).appendTo('#myblock');
-
-
-            //$('<button type="button" class="btn btn-xl btn-block btn-sf push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
-        } else {
-            //$('<button type="button" class="btn btn-xl btn-block btn-sf-nok push-10" onclick="selectItem(this.innerText)">').text(podinfo[i + 8]).appendTo('#myblock');
-
-            $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
-            if (podinfo[i+2]=='Job') {
-                $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/job.png" /> Scheduled').appendTo('#myblock');
-                $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
-            } else
-            {
-                $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
-                $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
-            }
-
-
-            //$(' <span class="font-s16 font-w600"></span></div></div>').text( podinfo[ i + 8]).appendTo('#myblock');
-
-        }
-        var details = document.createElement( 'div' );
-        details.className = 'restarts';
-        var podname = document.createElement('podname'); // is a node
-        //podname.className = 'restarts';
-        //podname.align = podinfo[ i + 1 ];
-        //podname.detail1 = podinfo[ i + 1 ];
-        details.appendChild(podname)
-
-        var mypodrow = document.createElement('mypodrow'); // is a node
-        mypodrow.align = podinfo[ i + 3 ];
-        details.appendChild(mypodrow)
-
-        var mypodcolumn = document.createElement('mypodcolumn'); // is a node
-        mypodcolumn.align = podinfo[ i + 4 ];
-        details.appendChild(mypodcolumn)
-
-        var imageid = document.createElement('imageid'); // is a node
-        imageid.align = podinfo[ i + 6 ];
-        details.appendChild(imageid)
-
-        var startedat = document.createElement('startedat'); // is a node
-        startedat.align = podinfo[ i + 7 ];
-        details.appendChild(startedat)
-
-        var xpos = document.createElement('xpos'); // is a node
-        xpos.align = ( podinfo[ i + 3 ] * 140 ) - 1230;
-        details.appendChild(xpos)
-
-        var podreplicaname = document.createElement('podreplicaname'); // is a node
-        podreplicaname.align = podinfo[ i + 8 ];
-        details.appendChild(podreplicaname)
-
-        details.className = 'details';
-        details.innerHTML = podinfo[ i + 1 ];
-        details.align = podinfo[ i + 6 ];
-        details.title = podinfo[ i + 7 ];
-        details.id = podinfo[ i + 8 ];
-        details.tabIndex = ( podinfo[ i + 3 ] * 140 ) - 1230;
-        element.appendChild( details );
-
-        var deletebtn = document.createElement( 'div' );
-        deletebtn.textContent = "Select";
-        deletebtn.className = 'delete';
-        element.appendChild( deletebtn );
-
-        var podstatus = document.createElement( 'div' );
-        podstatus.textContent = podinfo[ i + 7 ];
-
-        if ( podstatus.textContent == "-Podstatus: Running") {
-           podstatus.className = 'podgood';
-
-        } else {
-           podstatus.className = 'podbad';
-
-
-        };
-        if (selecteditem == "skip") {
-            podinfodetail1.innerHTML = podinfo[ i + 5 ];
-            podinfodetail2.innerHTML = podinfo[ i + 7 ];
-            podinfodetail3.innerHTML = podinfo[ i + 1 ];
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.open('GET', '/poddetail?mynamespace='+mynamespace+'&mypoddetail='+selecteditem, true);
-            //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
-            xhttp.send();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var response = JSON.parse(xhttp.responseText);
-                    //console.log(response);
-                    //info[0] = jsonPath(response , "$..metadata.name");
-
-                    //var response5 = jsonPath(response , "$.spec.containers[*].image");
-
-                   // areatext1.value= '';
-                   // areatext1.value+='Podname         : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
-                    podinfodetail4.innerHTML ='Pod IP          : ' + jsonPath(response , "$..status.podIP")+ "\r\n";
-                   // areatext1.value+='Podstatus       : ' + jsonPath(response , "$..status.phase")+ "\r\n";
-                   // areatext1.value+='Pod starttime   : ' + jsonPath(response , "$..status.startTime")+ "\r\n";
-                    //areatext1.value+='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
-                    //areatext1.value+='Containers #    : ' + response5.length+ "\r\n";
-                    //areatext1.value+='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
-                    //areatext1.value+='Containers ready: ' + jsonPath(response , "$..status.containerStatuses[*].ready")+ "\r\n";
-                    //areatext1.value+='Container ports : ' + jsonPath(response , "$..spec.containers[*].ports[0].containerPort")+ "\r\n";
-                    //areatext1.value+='cpu requests    : ' + jsonPath(response , "$..spec.containers[*].resources.requests.cpu")+ "\r\n";
-                    //areatext1.value+='memory requests : ' + jsonPath(response , "$..spec.containers[*].resources.requests.memory")+ "\r\n";
-                    //areatext1.value+='cpu limits      : ' + jsonPath(response , "$..spec.containers[*].resources.limits.cpu")+ "\r\n";
-                    //areatext1.value+='memory limits   : ' + jsonPath(response , "$..spec.containers[*].resources.limits.memory")+ "\r\n";
-
-
-                    //detail9.innerHTML = 'Pod starttime     : ' + jsonPath(response , "$.status.startTime");
-                    //detail12.innerHTML = jsonPath(response , "$.metadata.selfLink");
-                    //detail10.innerHTML = 'Open spec';
-                    //detail11.innerHTML = 'Delete pod';
-                    //detail13.innerHTML = '';
-                    //detail14.innerHTML = '';
-                }
-            }
-
-
-
-
-        }
-
-
-        element.appendChild( podstatus );
-        var object = new THREE.CSS3DObject( element );
-        object.position.x = ( podinfo[ i + 3 ] * 140 ) - 1360;
-        object.position.y = - ( podinfo[ i + 4 ] * 130 ) + 1030;
-        object.type = 'pod';
-
-    }
-
 }
