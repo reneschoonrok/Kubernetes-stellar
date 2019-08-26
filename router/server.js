@@ -15,7 +15,7 @@ var router = express.Router();
 var envtoken = 'empty';
 var authtoken = 'also empty';
 const client = new Client({ version: '1.13' })
-
+var chattext = [];
 
 
 app.use(express.static('public'));
@@ -180,6 +180,19 @@ app.get("/podlogs", function(httpRequest, httpResponse, next){
         //console.log(result)
         httpResponse.send(result);
     });
+});
+
+
+
+app.get("/chattext", function(httpRequest, httpResponse, next){
+        httpResponse.send(chattext);
+});
+
+app.get("/addchatline", function(httpRequest, httpResponse, next){
+    var chatline =httpRequest.query.chatline;
+
+    chattext.push(chatline);
+    httpResponse.send('ok');
 });
 
 app.get("/nodes", function(httpRequest, httpResponse, next){
