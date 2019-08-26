@@ -175,7 +175,7 @@
                                 <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail15"></button>
                             </div>
                             <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf3 push-10" id="podinfodetail10">Pod logs</button>
+                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail10">Pod logs</button>
                             </div>
 
 
@@ -297,12 +297,21 @@
                                 <div class="row items-push">
 
                                     <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatid" placeholder="Cmder" class="button6" size="15" style="resize:none" ></input>
+                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatid" placeholder="<Me>" class="button6" size="15" style="resize:none" ></input>
                                         <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatmsg" placeholder="type here and press <enter> to chat."class="button6" size="43" style="resize:none" ></input>
                                         <textarea class="btn btn-xl btn-block btn-sf3 push-10" id="chattext" rows="8" cols="45" class="button6" style="resize:none" ></textarea>
-                                        <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf3 push-10" onclick="displayCanvas()">Hypersleep</button>
-                                        <button type="button" id="restartbutton" class="btn btn-xl btn-block btn-sf2 push-10">Click to restart. Controls: Z=Fire N=Left, M=Right!</button>
-                                        <canvas id="canvasId" width="250" height="250"></canvas>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                           <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf push-10" onclick="displayCanvas()">Space invaders  -  </button>
+                                        </div>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                            <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf" onclick="displayCanvaspong()">-  Pong</button>
+                                        </div>
+
+                                        <button type="button" id="restartbutton" class="btn btn-xl btn-block btn-sf2">Click to restart. Controls: Z=Fire N=Left, M=Right!</button>
+                                        <canvas id="canvasId" width="400" height="250"></canvas>
+                                        <canvas id="canvasIdpong" width="400" height="250"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -371,6 +380,7 @@
         <script src="js/volumes.js"></script>
         <script src="js/chat.js"></script>
         <script src="js/game.js"></script>
+        <script src="js/pong.js"></script>
 
         <!-- Page JS Code -->
         <script>
@@ -391,6 +401,7 @@
             var selecteditem = "";
             var myauthtoken = "empty";
             canvasId.style.display = "none";
+            canvasIdpong.style.display = "none";
             restartbutton.style.display = "none"
 
             $(document).keypress(function (e) {
@@ -418,6 +429,21 @@
                     canvas.style.display = "";
                     restartbutton.style.display ="";
                     restartbutton.click();
+
+                    //loadgame("screen");
+                }
+            }
+
+            function displayCanvaspong() {
+                var canvas = document.getElementById("canvasIdpong")
+                if (canvas.style.display == "") {
+                    canvas.style.display = "none";
+                    //restartbutton.style.display = "none"
+                } else
+                {
+                    canvas.style.display = "";
+                    //restartbutton.style.display ="";
+                    //restartbutton.click();
 
                     //loadgame("screen");
                 }

@@ -24,6 +24,16 @@ h1, h2, h3, .h1, .h2, .h3, .heading {
     color: #e8f4ff;
 }
 
+#canvasId{
+    opacity:0.8;
+
+}
+
+#canvasIdpong{
+    opacity:0.8;
+    color: #000000;
+}
+
 a {
     color: #62d0f0;
     font-weight: 600;

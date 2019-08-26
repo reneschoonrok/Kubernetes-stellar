@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="83d38835-58a4-4f65-a7f0-13d5ea3c2b13" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/ares.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ares.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,12 +19,12 @@
     <session id="1663759832">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="8" />
-          <entry key="project.open.time.12" value="8" />
+          <entry key="project.open.time.12" value="9" />
           <entry key="project.open.time.122" value="1" />
-          <entry key="project.open.time.13" value="5" />
+          <entry key="project.open.time.13" value="7" />
           <entry key="project.open.time.14" value="4" />
           <entry key="project.open.time.15" value="4" />
           <entry key="project.open.time.16" value="2" />
@@ -37,10 +37,11 @@
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.32" value="1" />
-          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.35" value="1" />
           <entry key="project.open.time.37" value="2" />
           <entry key="project.open.time.40" value="1" />
+          <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.46" value="1" />
@@ -57,41 +58,41 @@
           <entry key="project.open.time.79" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="8" />
-          <entry key="project.opened" value="93" />
+          <entry key="project.opened" value="98" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="7" />
-          <entry key="html" value="9" />
-          <entry key="js" value="23" />
+          <entry key="css" value="8" />
+          <entry key="html" value="10" />
+          <entry key="js" value="24" />
           <entry key="md" value="2" />
           <entry key="yaml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="7" />
-          <entry key="HTML" value="9" />
-          <entry key="JavaScript" value="23" />
+          <entry key="CSS" value="8" />
+          <entry key="HTML" value="10" />
+          <entry key="JavaScript" value="24" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="442" />
-          <entry key="html" value="2859" />
-          <entry key="js" value="2165" />
+          <entry key="css" value="461" />
+          <entry key="html" value="2985" />
+          <entry key="js" value="2259" />
           <entry key="md" value="92" />
           <entry key="yaml" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="442" />
-          <entry key="HTML" value="2859" />
-          <entry key="JavaScript" value="2165" />
+          <entry key="CSS" value="461" />
+          <entry key="HTML" value="2985" />
+          <entry key="JavaScript" value="2259" />
           <entry key="PLAIN_TEXT" value="92" />
           <entry key="YAML" value="56" />
         </counts>
@@ -103,8 +104,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="303" column="176" selection-start-line="303" selection-start-column="176" selection-end-line="303" selection-end-column="176" />
+            <state relative-caret-position="245">
+              <caret line="303" column="95" selection-start-line="303" selection-start-column="95" selection-end-line="303" selection-end-column="95" />
               <folding>
                 <element signature="n#style#0;n#label#0;n#p#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -115,19 +116,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/chat.js">
+        <entry file="file://$PROJECT_DIR$/public/js/pong.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+            <state relative-caret-position="1088">
+              <caret line="64" column="22" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/game.js">
+        <entry file="file://$PROJECT_DIR$/public/css/ares.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4726">
-              <caret line="278" column="51" selection-start-line="278" selection-start-column="51" selection-end-line="278" selection-end-column="51" />
+            <state relative-caret-position="561">
+              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -191,14 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tooltip</find>
-      <find>myblock</find>
-      <find>myingre</find>
-      <find>600</find>
-      <find>btn-sf</find>
-      <find>podnum</find>
-      <find>getevents</find>
-      <find>getingress</find>
       <find>deplo</find>
       <find>dev</find>
       <find>pos</find>
@@ -221,6 +214,14 @@
       <find>doc</find>
       <find>sendtoke</find>
       <find>logs</find>
+      <find>canvas</find>
+      <find>key</find>
+      <find>press an</find>
+      <find>paddle</find>
+      <find>paddle.x</find>
+      <find>colors</find>
+      <find>los</find>
+      <find>CMD</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -238,7 +239,6 @@
         <option value="$PROJECT_DIR$/2-service.yaml" />
         <option value="$PROJECT_DIR$/views/indexold.html" />
         <option value="$PROJECT_DIR$/Readme.md" />
-        <option value="$PROJECT_DIR$/public/css/ares.css" />
         <option value="$PROJECT_DIR$/public/js/pods.js" />
         <option value="$PROJECT_DIR$/public/js/poddetails.js" />
         <option value="$PROJECT_DIR$/public/js/ingresses.js" />
@@ -247,6 +247,8 @@
         <option value="$PROJECT_DIR$/router/server.js" />
         <option value="$PROJECT_DIR$/public/js/chat.js" />
         <option value="$PROJECT_DIR$/public/js/game.js" />
+        <option value="$PROJECT_DIR$/public/css/ares.css" />
+        <option value="$PROJECT_DIR$/public/js/pong.js" />
         <option value="$PROJECT_DIR$/views/index.html" />
       </list>
     </option>
@@ -279,7 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,6 +319,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -451,17 +453,22 @@
       <workItem from="1566825925347" duration="1101000" />
       <workItem from="1566827412281" duration="552000" />
       <workItem from="1566835936381" duration="712000" />
+      <workItem from="1566837276697" duration="974000" />
+      <workItem from="1566838559399" duration="1020000" />
+      <workItem from="1566847055991" duration="1058000" />
+      <workItem from="1566848340691" duration="995000" />
+      <workItem from="1566849519153" duration="401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84904000" />
+    <option name="totallyTimeSpent" value="89352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="9" y="2" width="1918" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15608181" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.164155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -477,13 +484,13 @@
       <window_info anchor="bottom" id="Statistic" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3654267" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3654267" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info active="true" anchor="right" x="774" y="369" width="1009" height="154" id="Run" order="5" type="WINDOWED" visible="true" weight="0.30151844" />
+      <window_info anchor="right" x="774" y="369" width="1009" height="154" id="Run" order="5" type="WINDOWED" weight="0.30151844" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,6 +506,11 @@
           <url>file://$PROJECT_DIR$/router/server.js</url>
           <line>193</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public/js/pong.js</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -547,13 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/ares.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="164" column="4" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Readme.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -585,18 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="303" column="176" selection-start-line="303" selection-start-column="176" selection-end-line="303" selection-end-column="176" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#p#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/chat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -606,8 +599,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4726">
-          <caret line="278" column="51" selection-start-line="278" selection-start-column="51" selection-end-line="278" selection-end-column="51" />
+        <state relative-caret-position="153">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="303" column="95" selection-start-line="303" selection-start-column="95" selection-end-line="303" selection-end-column="95" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#p#0;n#header#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#main#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/pong.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" column="22" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/ares.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
         </state>
       </provider>
     </entry>
