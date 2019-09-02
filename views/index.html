@@ -175,7 +175,7 @@
                                 <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail15"></button>
                             </div>
                             <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf3 push-10" id="podinfodetail10">Pod logs</button>
+                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail10">Pod logs</button>
                             </div>
 
 
@@ -287,6 +287,37 @@
                             </div>
                         </div>
                         <!-- END DATA_STREAM -->
+
+                        <!-- CHAT -->
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">BROADCASTING</h2>
+                            </div>
+                            <div class="block-content" id="mychatblock">
+                                <div class="row items-push">
+
+                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatid" placeholder="<Me>" class="button6" size="15" style="resize:none" ></input>
+                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatmsg" placeholder="type here and press <enter> to chat."class="button6" size="43" style="resize:none" ></input>
+                                        <textarea class="btn btn-xl btn-block btn-sf3 push-10" id="chattext" rows="8" cols="45" class="button6" style="resize:none" ></textarea>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                           <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf push-10" onclick="displayCanvas()">Space invaders  -  </button>
+                                        </div>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                            <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf" onclick="displayCanvaspong()">-  Pong</button>
+                                        </div>
+
+                                        <button type="button" id="restartbutton" class="btn btn-xl btn-block btn-sf2">Click to restart. Controls: Z=Fire N=Left, M=Right!</button>
+                                        <canvas id="canvasId" width="400" height="250"></canvas>
+                                        <canvas id="canvasIdpong" width="400" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CHAT -->
+
                         <!-- Volumes -->
 
                         <div class="block">
@@ -312,25 +343,11 @@
                                 <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Mem / CPU stats (todo)</h2>
                             </div>
                             <div class="block-content block-content-full overflow-hidden">
-                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="100">X: 95</div>
-                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                </div>
-                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="300">Y: 49</div>
-                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="300">
-                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%"></div>
-                                </div>
-                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">Z: 59</div>
-                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="500">
-                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100" style="width: 59%"></div>
-                                </div>
-                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="700">V: +60</div>
-                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="700">
-                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
-                                </div>
+
                             </div>
                         </div>
                         <!-- END POS_TRACKING -->
+
                     </div>
                     <!-- END Right Column -->
                 </div>
@@ -358,12 +375,12 @@
         <script src="js/pods.js"></script>
         <script src="js/poddetails.js"></script>
         <script src="js/namespaces.js"></script>
-        <script src="js/three.js"></script>
-        <script src="js/TrackballControls.js"></script>
-        <script src="js/CSS3DRenderer.js"></script>
         <script src="js/events.js"></script>
         <script src="js/ingresses.js"></script>
         <script src="js/volumes.js"></script>
+        <script src="js/chat.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/pong.js"></script>
 
         <!-- Page JS Code -->
         <script>
@@ -383,12 +400,54 @@
             var pvcinfo = [];
             var selecteditem = "";
             var myauthtoken = "empty";
+            canvasId.style.display = "none";
+            canvasIdpong.style.display = "none";
+            restartbutton.style.display = "none"
+
+            $(document).keypress(function (e) {
+                if (e.which == 13) {
+                    //alert('enter key is pressed');
+                    //console.log('enter key is pressed');
+                    addchatline();
+                    chatmsg.text = '';
+                }
+            });
+
             jQuery(function(){
                 // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
                 Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
             });
             podnum.innerHTML=65
 
+            function displayCanvas() {
+                var canvas = document.getElementById("canvasId")
+                if (canvas.style.display == "") {
+                    canvas.style.display = "none";
+                    restartbutton.style.display = "none"
+                } else
+                {
+                    canvas.style.display = "";
+                    restartbutton.style.display ="";
+                    restartbutton.click();
+
+                    //loadgame("screen");
+                }
+            }
+
+            function displayCanvaspong() {
+                var canvas = document.getElementById("canvasIdpong")
+                if (canvas.style.display == "") {
+                    canvas.style.display = "none";
+                    //restartbutton.style.display = "none"
+                } else
+                {
+                    canvas.style.display = "";
+                    //restartbutton.style.display ="";
+                    //restartbutton.click();
+
+                    //loadgame("screen");
+                }
+            }
 
             var intervalID = window.setInterval(myNamespaceRefresh, 10000);
 
@@ -401,49 +460,47 @@
                 selecteditem = itemtext;
             }
 
-            var intervalID = window.setInterval(myRefresh, 5000);
+            var intervalID = window.setInterval(myRefresh, 1900);
 
             function myRefresh() {
-
                 loadinfo();
-                //loadreplicasets();
-                //loadevents();
-                podinfo.splice(0, podinfo.length)
-                //replicaset.splice(0, replicaset.length)
-                //eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(poddetails, 5100);
+            var intervalID = window.setInterval(poddetails, 2200);
 
             function poddetails() {
                 loadpoddetails();
             }
 
-            var intervalID = window.setInterval(logdetails, 5200);
+            var intervalID = window.setInterval(logdetails, 3200);
 
             function logdetails() {
                 loadlogdetails();
             }
 
-            var intervalID = window.setInterval(eventdetails, 3000);
+            var intervalID = window.setInterval(eventdetails, 2000);
 
             function eventdetails() {
                 loadevents();
-                eventinfo.splice(0, eventinfo.length)
             }
 
-            var intervalID = window.setInterval(ingressdetails, 5600);
+            var intervalID = window.setInterval(ingressdetails, 6000);
 
             function ingressdetails() {
                 loadingresses();
-                ingressinfo.splice(0, ingressinfo.length)
+
             }
 
-            var intervalID = window.setInterval(pvcdetails, 9400);
+            var intervalID = window.setInterval(pvcdetails, 8000);
 
             function pvcdetails() {
                 loadpvc();
-                pvcinfo.splice(0, pvcinfo.length)
+            }
+
+            var intervalID = window.setInterval(getchat, 3000);
+
+            function getchat() {
+                loadchat();
             }
 
         </script>
