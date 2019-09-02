@@ -6,7 +6,7 @@ const config = require('kubernetes-client/backends/request').config
 
 const express = require('express')
 const app = express()
-const port = 80
+const port = 8080
 var path = require('path');
 var fs = require('fs');
 var url = require('url');
@@ -264,7 +264,7 @@ app.get("/token", function(httpRequest, httpResponse, next){
 
 });
 
-var server = app.listen(80, function () {
+var server = app.listen(8080, function () {
 
     var host = server.address().address
     var port = server.address().port
