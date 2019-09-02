@@ -25,7 +25,7 @@ This should open your browser and the page will show. <br/>
 <br/>
 Without yamls files: <br/>
 kubectl create deployment kubernetes-stellar --image=reneschoonrok/kubernetes-stellar:latest <br/>
-kubectl expose deployment kubernetes-stellar --type=LoadBalancer --port=80 <br/>
+kubectl expose deployment kubernetes-stellar --type=LoadBalancer --port=8080 <br/>
 minikube service kubernetes-stellar <br/>
 <br/>
 If you are not on minikube but on a full cluster than expose via loadbalancer/ingress etc.
