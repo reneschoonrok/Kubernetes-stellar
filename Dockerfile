@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
 # Create app directory
 WORKDIR /usr/src/app
 
-USER node
+USER 1000
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
