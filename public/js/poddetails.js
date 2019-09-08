@@ -5,6 +5,8 @@ function loadpoddetails() {
         var xhttp = new XMLHttpRequest();
         xhttp.open('GET', '/poddetail?mynamespace=' + mynamespace + '&mypoddetail=' + selecteditem, true);
         //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.currentTarget.childNodes[2].id, true);
+
+        //let res = await client.api.v1.namespaces('namespace_name').pods('pod_name').exec.post({
         xhttp.send();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -28,6 +30,7 @@ function loadpoddetails() {
                 podinfodetail7f.innerHTML = "";
                 podinfodetail8.innerHTML = "";
                 podinfodetail8f.innerHTML = "";
+
                 if (jsonPath(response , "$..status.conditions[0].status")=="True") {
                     podinfodetail5.innerHTML = jsonPath(response, "$..status.conditions[0].status") + "\r\n";
                 } else {
@@ -72,12 +75,39 @@ function loadlogdetails() {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 areatext.value= '';
+                if (xhttp.responseText!= "") {
+                    var response = JSON.parse(xhttp.responseText);
+                    var responsestr = response.body.split("\n");
+                    for (var i = 0; i < responsestr.length; i++) {
+                        areatext.value += responsestr[i];
+                        areatext.value += "\r\n";
+                    }
+
+                    //areatext.value += response
+                    areatext.scrollTop = areatext.scrollHeight;
+                }
+
+            }
+        }
+    }
+}
+
+function deletePod() {
+
+    if (selecteditem != "") {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open('GET', '/deletepod?mynamespace='+mynamespace+'&mypoddetail='+selecteditem+'&myauthtoken='+myauthtoken, true);
+        //xhttp.open("GET", "http://localhost:8001/api/v1/namespaces/"+mynamespace+"/pods/"+event.target.children[2].id+"/log?tailLines=20", true);
+        xhttp.send();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                areatext.value= '';
+                if (xhttp.responseText==""){selecteditem="";} //leeg dus leegmaken
                 var response = JSON.parse(xhttp.responseText);
                 var responsestr = response.body.split("\n");
-                for (var i = 0; i < responsestr.length; i++) {
-                    areatext.value +=responsestr[i];
-                    areatext.value +="\r\n";
-                }
+
+                    areatext.value = "pod deleted"
+
 
                 //areatext.value += response
                 areatext.scrollTop = areatext.scrollHeight;
