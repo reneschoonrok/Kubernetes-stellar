@@ -174,8 +174,13 @@
                             <div class="col-xs-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
                                 <button class="btn btn-xl btn-block btn-sf2 push-10" id="podinfodetail15"></button>
                             </div>
-                            <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                <button class="btn btn-xl btn-block btn-sf push-10" id="podinfodetail10">Pod logs</button>
+                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                <button class="btn btn-xl btn-block btn-sf push-5" id="podinfodetail10">Pod logs</button>
+
+                            </div>
+                            <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+
+                                <button class="btn btn-xl btn-block btn-sf2f push-5" id="podinfodetail10" onclick="deletePod()">Delete pod</button>
                             </div>
 
 
@@ -203,7 +208,6 @@
                         </div>
                         <!-- END Environment -->
 
-
                         <!-- Ingress -->
 
                         <div class="block">
@@ -214,16 +218,18 @@
                             <div class="block-content"  id="myingressblock">
                                 <div class="row items-push overflow-hidden">
 
-                                    </div>
-                                    <div class="row items-push overflow-hidden">
+                                </div>
+                                <div class="row items-push overflow-hidden">
 
-                                    </div>
-                                    <div class="row items-push overflow-hidden">
+                                </div>
+                                <div class="row items-push overflow-hidden">
 
-                                    </div>
                                 </div>
                             </div>
-                            <!-- END Ingress -->
+                        </div>
+                        <!-- END Ingress -->
+
+
 
                     </div>
                     <!-- END Left Column -->
@@ -287,42 +293,32 @@
                             </div>
                         </div>
                         <!-- END DATA_STREAM -->
+                        <!-- Deployments -->
 
-                        <!-- CHAT -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">BROADCASTING</h2>
+                                <h2 class="block-title visibility-hidden" id="mydeploymentslabel" data-toggle="appear" data-class="animated fadeInDown" onclick="displayDeployments()">+ Deployments</h2>
                             </div>
-                            <div class="block-content" id="mychatblock">
-                                <div class="row items-push">
+                            <div class="block-content"  id="mydeploymentsblock">
+                                <div class="row items-push overflow-hidden">
 
-                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatid" placeholder="<Me>" class="button6" size="15" style="resize:none" ></input>
-                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatmsg" placeholder="type here and press <enter> to chat."class="button6" size="43" style="resize:none" ></input>
-                                        <textarea class="btn btn-xl btn-block btn-sf3 push-10" id="chattext" rows="8" cols="45" class="button6" style="resize:none" ></textarea>
+                                </div>
+                                <div class="row items-push overflow-hidden">
 
-                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                           <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf push-10" onclick="displayCanvas()">Space invaders  -  </button>
-                                        </div>
+                                </div>
+                                <div class="row items-push overflow-hidden">
 
-                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                            <button type="button" id="gamebutton" class="btn btn-xl btn-block btn-sf" onclick="displayCanvaspong()">-  Pong</button>
-                                        </div>
-
-                                        <button type="button" id="restartbutton" class="btn btn-xl btn-block btn-sf2">Click to restart. Controls: Z=Fire N=Left, M=Right!</button>
-                                        <canvas id="canvasId" width="400" height="250"></canvas>
-                                        <canvas id="canvasIdpong" width="400" height="250"></canvas>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- END CHAT -->
+                        <!-- END Planets -->
+
 
                         <!-- Volumes -->
 
                         <div class="block">
                             <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Volumes</h2>
+                                <h2 class="block-title visibility-hidden" id="myvolumeslabel" data-toggle="appear" data-class="animated fadeInDown" onclick="displayVolumes()">+ Volumes</h2>
                             </div>
                             <div class="block-content"  id="myvolumesblock">
                                 <div class="row items-push overflow-hidden">
@@ -337,6 +333,36 @@
                             </div>
                         </div>
                         <!-- END Planets -->
+
+                        <!-- CHAT -->
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" id="sociallabel" data-toggle="appear" data-class="animated fadeInDown" onclick="displayChat()">+ SOCIAL</h2>
+                            </div>
+                            <div class="block-content" id="mychatblock">
+                                <div class="row items-push">
+
+                                    <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatid" placeholder="<Me>" class="button6" size="15" style="resize:none" ></input>
+                                        <input class="btn btn-xl btn-block btn-sf3 push-10" id="chatmsg" placeholder="type here and press <enter> to chat."class="button6" size="43" style="resize:none" ></input>
+                                        <textarea class="btn btn-xl btn-block btn-sf3 push-10" id="chattext" rows="8" cols="45" class="button6" style="resize:none" ></textarea>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                            <button type="button" id="gamebutton1" class="btn btn-xl btn-block btn-sf push-10" onclick="displayCanvas()">Space invaders  -  </button>
+                                        </div>
+
+                                        <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                            <button type="button" id="gamebutton2" class="btn btn-xl btn-block btn-sf" onclick="displayCanvaspong()">-  Pong</button>
+                                        </div>
+
+                                        <button type="button" id="restartbutton" class="btn btn-xl btn-block btn-sf2">Click to restart. Controls: Z=Fire N=Left, M=Right!</button>
+                                        <canvas id="canvasId" width="400" height="250"></canvas>
+                                        <canvas id="canvasIdpong" width="400" height="250"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END CHAT -->
                         <!-- POS_TRACKING -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
@@ -376,6 +402,7 @@
         <script src="js/poddetails.js"></script>
         <script src="js/namespaces.js"></script>
         <script src="js/events.js"></script>
+        <script src="js/deployments.js"></script>
         <script src="js/ingresses.js"></script>
         <script src="js/volumes.js"></script>
         <script src="js/chat.js"></script>
@@ -384,6 +411,7 @@
 
         <!-- Page JS Code -->
         <script>
+            displayChat();
             function changenamespace(element) {
                 //alert(element.options[element.selectedIndex].text)
                 mynamespace =element.options[element.selectedIndex].text;
@@ -398,11 +426,16 @@
             var eventinfo = [];
             var ingressinfo = [];
             var pvcinfo = [];
+            var deployment = [];
             var selecteditem = "";
+            var selectedtype = "";
             var myauthtoken = "empty";
+            var showdeployments = "false";
+            var showvolumes = "false";
             canvasId.style.display = "none";
             canvasIdpong.style.display = "none";
-            restartbutton.style.display = "none"
+            restartbutton.style.display = "none";
+
 
             $(document).keypress(function (e) {
                 if (e.which == 13) {
@@ -434,6 +467,64 @@
                 }
             }
 
+
+            function displayChat() {
+                var canvas = document.getElementById("canvasId")
+                if (chatid.style.display == "") {
+                    chatid.style.display = "none";
+                    chatmsg.style.display = "none"
+                    chattext.style.display = "none"
+                    var game1 = document.getElementById("gamebutton1")
+                    game1.style.display = "none"
+                    var game2 = document.getElementById("gamebutton2")
+                    game2.style.display = "none"
+                    sociallabel.textContent = "+ SOCIAL"
+                } else
+                {
+                    chatid.style.display = "";
+                    chatmsg.style.display ="";
+                    chattext.style.display = ""
+                    sociallabel.textContent = "- SOCIAL"
+                    var game1 = document.getElementById("gamebutton1")
+                    game1.style.display = ""
+                    var game2 = document.getElementById("gamebutton2")
+                    game2.style.display = ""
+                    //loadgame("screen");
+                }
+            }
+
+            function displayDeployments() {
+                var deploymentlabel = document.getElementById("mydeploymentslabel")
+                if (showdeployments == "true") {
+                    showdeployments = "false";
+                    mydeploymentslabel.textContent = "+ DEPLOYMENTS"
+                    const myNode = document.getElementById("mydeploymentsblock");
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
+                } else
+                {
+                    showdeployments = "true";
+                    mydeploymentslabel.textContent = "- DEPLOYMENTS"
+                }
+            }
+
+            function displayVolumes() {
+                var myvolumeslabel = document.getElementById("myvolumeslabel")
+                if (showvolumes == "true") {
+                    showvolumes = "false";
+                    myvolumeslabel.textContent = "+ VOLUMES"
+                    const myNode = document.getElementById("myvolumesblock");
+                    while (myNode.firstChild) {
+                        myNode.removeChild(myNode.firstChild);
+                    }
+                } else
+                {
+                    showvolumes = "true";
+                    myvolumeslabel.textContent = "- VOLUMES"
+                }
+            }
+
             function displayCanvaspong() {
                 var canvas = document.getElementById("canvasIdpong")
                 if (canvas.style.display == "") {
@@ -456,17 +547,18 @@
                 //namespaces.splice(0, namespaces.length)
             }
 
-            function selectItem(itemtext) {
+            function selectPod(itemtext) {
                 selecteditem = itemtext;
+                selectedtype = "pod";
             }
 
-            var intervalID = window.setInterval(myRefresh, 1900);
+            var intervalID = window.setInterval(myRefresh, 1800);
 
             function myRefresh() {
                 loadinfo();
             }
 
-            var intervalID = window.setInterval(poddetails, 2200);
+            var intervalID = window.setInterval(poddetails, 1900);
 
             function poddetails() {
                 loadpoddetails();
@@ -491,10 +583,21 @@
 
             }
 
-            var intervalID = window.setInterval(pvcdetails, 8000);
+            var intervalID = window.setInterval(pvcdetails, 4000);
 
             function pvcdetails() {
-                loadpvc();
+                if ( showvolumes == "true") {
+                    loadpvc();
+                }
+            }
+
+            var intervalID = window.setInterval(deploymentsload, 3000);
+
+            function deploymentsload() {
+                if ( showdeployments == "true")
+                {
+                    loaddeployments();
+                }
             }
 
             var intervalID = window.setInterval(getchat, 3000);

@@ -55,18 +55,18 @@ function loadinfo() {
               $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
               $('<div class="tooltip"><span class="tooltiptext">'+podinfo[i+5]+'</span><img src="/img/podoksmall.gif" /> Scheduled').appendTo('#myblock');
 
-              $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+              $('<button type="button" class="btn btn-xl btn-sf" onclick="selectPod(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
 
           } else {
 
               $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
               if (podinfo[i+2]=='Job') {
                   $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/job.png" /> Scheduled').appendTo('#myblock');
-                  $('<button type="button" class="btn btn-xl btn-sf" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+                  $('<button type="button" class="btn btn-xl btn-sf" onclick="selectPod(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
               } else
               {
                   $('<div class="tooltip"><span class="tooltiptext">' + podinfo[i + 5] + '</span><img src="/img/infinite.gif" /> Scheduled').appendTo('#myblock');
-                  $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectItem(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
+                  $('<button type="button" class="btn btn-xl btn-sf-nok" onclick="selectPod(this.innerText)"></button>').text( podinfo[ i + 8]).appendTo('#myblock');
               }
 
           }

@@ -248,7 +248,7 @@ app.get("/mypvc", function(httpRequest, httpResponse, next){
 
 app.get("/deletepod", function(httpRequest, httpResponse, next){
     var namespace_name =httpRequest.query.mynamespace;
-    var mypodname =httpRequest.query.podname;
+    var mypodname =httpRequest.query.mypoddetail;
     var myauthtoken =httpRequest.query.myauthtoken;
     var mydelete = getdelete(namespace_name, mypodname, myauthtoken)
 
