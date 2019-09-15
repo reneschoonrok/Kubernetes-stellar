@@ -45,11 +45,11 @@ function loadpvc() { //http://localhost:8001/apis/extensions/v1beta1/namespaces/
       }
 
 
-      if (pvcinfo.length > 8) {
-          volumesnum.innerHTML = pvcinfo.length / 9
-      } else {
-          volumesnum.innerHTML = 0
-      }
+      //if (pvcinfo.length > 8) {
+      //    volumesnum.innerHTML = pvcinfo.length / 9
+      //} else {
+      //    volumesnum.innerHTML = 0
+      //}
 
       for ( var i = 0; i < pvcinfo.length; i += 9 ) {
 

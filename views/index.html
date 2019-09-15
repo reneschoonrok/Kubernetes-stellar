@@ -43,12 +43,17 @@
                     <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://github.com/reneschoonrok/Kubernetes-stellar">KUBERNETES-STELLAR</a>
                 </h1>
                 <p>
-                <label for="box" style = "font-size:14px">Welcome commander - Establishing contact with Hybrid Cloud Environment. Scanning for GKE.. EKS.. AKS.. Openshift.. minikube.. </label>
+                <label for="box" id="lineid" style = "font-size:14px">Welcome Cmdr - Scanning for Hybrid Cloud Technology  </label>
+                <label for="box" style = "font-size:14px">--GKE  </label>
+                <label for="box" style = "font-size:14px">--EKS </label>
+                <label for="box" style = "font-size:14px">--AKS </label>
+                <label for="box" style = "font-size:14px">--Openshift </label>
+                <label for="box" style = "font-size:14px">--Minikube </label>
+                    <label for="box" style = "font-size:14px">--Other. </label>
+                    <label for="box" style = "font-size:14px">--Select or enter a namespace you are authorized for. </label>
+            </p>
 
-                </p>
-                <p><label for="box" style = "font-size:14px; color: white">Custom Namespace:</label> <input type="text" class="btn-sf" id="customnamespace" placeholder="custom" onchange="changenamespacecustom(this);">
-                    <button type="button" onclick="sendToken()">Submit token to see logs (click)</button> <input type="password" id="mytoken" placeholder="enter token">
-                  </p>
+
                 <script>
                     function sendToken() {
                         myauthtoken = document.getElementById('mytoken').value;
@@ -56,21 +61,7 @@
                 </script>
 
 
-                <div class="col-xs-1 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                    <label for="box" style = "font-size:16px;">Namespace:</label>
-                </div>
-                <div class="col-xs-1 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                  <div class="box" >
-                        <select id="selectnamespace" onchange="changenamespace(this);">
-                            <option>dev</option>
-                            <option>kube-system</option>
-                            <option>tst</option>
-                            <option>default</option>
-                            <option>custom</option>
-                        </select>
 
-                </div>
-                   </div>
 
             </header>
             <!-- END Header -->
@@ -247,17 +238,38 @@
                             </div>
                             <div class="block-content overflow-hidden">
                                 <div class="row items-push">
-                                    <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
-                                        <div class="font-s24 font-w300 text-white-op">Pods [<span class="text-success" id="podnum">0</span>]</div>
+                                    <p>
+                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <label for="box" style = "font-size:16px;">Namespace:</label>
                                     </div>
-                                    <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
-                                        <div class="font-s24 font-w300 text-white-op">Ingress [<span class="text-success" id="ingressnum">0</span>]</div>
+                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <div class="box" >
+                                            <select id="selectnamespace" onchange="changenamespace(this);">
+                                                <option>dev</option>
+                                                <option>kube-system</option>
+                                                <option>tst</option>
+                                                <option>default</option>
+                                                <option>custom</option>
+                                            </select>
+
+                                        </div>
                                     </div>
-                                    <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
-                                        <div class="font-s24 font-w300 text-white-op">Volumes [<span class="text-success" id="volumesnum">0</span>]</div>
+                                    </p>
+                                </div>
+                                <div class="row items-push">
+                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
+                                        <label for="box" style = "font-size:14px; color: white">Custom Namespace:</label>
                                     </div>
-                                    <div class="col-xs-6 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
-                                        <div class="font-s24 font-w300 text-white-op"> Recent events[<span class="text-success" id="eventnum">0</span>]</div>
+                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
+                                        <input type="text" id="customnamespace" style = "font-size:14px; color: black" placeholder="custom" onchange="changenamespacecustom(this);">
+                                    </div>
+                                </div>
+                                <div class="row items-push">
+                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
+                                        <button type="button" style = "font-size:14px; color: black" onclick="sendToken()">Submit token to see logs (click)</button>
+                                    </div>
+                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
+                                        <input type="password" style = "font-size:14px; color: black" id="mytoken" placeholder="enter token">
                                     </div>
                                 </div>
                             </div>
@@ -420,6 +432,8 @@
             function changenamespace(element) {
                 //alert(element.options[element.selectedIndex].text)
                 mynamespace =element.options[element.selectedIndex].text;
+                //var lineid = document.getElementById("lineid")
+                //lineid.textContent ="Connecting to namespace. Make sure your serviceaccount has rights!"
             }
 
             function changenamespacecustom(element) {
@@ -455,7 +469,7 @@
                 // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
                 Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
             });
-            podnum.innerHTML=65
+            //podnum.innerHTML=65
 
             function displayCanvas() {
                 var canvas = document.getElementById("canvasId")

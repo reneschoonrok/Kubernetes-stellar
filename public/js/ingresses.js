@@ -47,11 +47,11 @@ function loadingresses() { //http://localhost:8001/apis/extensions/v1beta1/names
         j = j + 9;
     }
 
-      if (ingressinfo.length > 8) {
-          ingressnum.innerHTML = ingressinfo.length / 9
-      } else {
-          ingressnum.innerHTML = 0
-      }
+      //if (ingressinfo.length > 8) {
+       //   ingressnum.innerHTML = ingressinfo.length / 9
+      //} else {
+      //    ingressnum.innerHTML = 0
+      //}
 
       const myNode = document.getElementById("myingressblock");
       while (myNode.firstChild) {
