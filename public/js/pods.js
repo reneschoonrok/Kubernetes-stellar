@@ -72,11 +72,11 @@ function loadinfo() {
           }
 
       }
-      if (podinfo.length > 8) {
-          podnum.innerHTML = podinfo.length / 9
-      } else {
-          podnum.innerHTML = 0
-      }
+      //if (podinfo.length > 8) {
+      //    podnum.innerHTML = podinfo.length / 9
+      //} else {
+      //    podnum.innerHTML = 0
+      //}
   }
 };
 }

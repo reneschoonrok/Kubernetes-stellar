@@ -47,7 +47,7 @@ function loadevents() {
 
 
 
-      eventnum.innerHTML = 0
+      //eventnum.innerHTML = 0
       for ( var i = 0; i < eventinfo.length; i += 9 ) {
 
 
