@@ -1,5 +1,5 @@
 # Kubernetes-stellar
-
+A Kubernetes operations dashboard. Runs on any kubernetes cluster in the world! Also on minikube. <br/>
 Interact with your kubernetes cluster in style.. just by starting a pod. :) <br/>
 <br/>
 View pod logs, details and cluster events with a single click. <br/>
