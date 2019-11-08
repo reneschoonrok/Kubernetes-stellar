@@ -12,10 +12,13 @@ body {
     color: #e8f4ff;
     font-family: 'Open Sans', sans-serif;
     font-size: 13px;
-    background-image: url(/img/bg_ares.jpg);
+    background-image: url(/img/world.png);
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
+
+    line-height: 0.5; /* 16.9px line-height */
+
 }
 
 h1, h2, h3, .h1, .h2, .h3, .heading {
@@ -58,6 +61,7 @@ p {
     box-shadow: 0px 0px 15px 2px #7Cbdbd inset;
     border: 2px solid #3acaec;
     border-radius: 5px;
+    line-height: 1; /* 16.9px line-height */
 }
 p {
     font-family: "Orbitron", sans-serif;
@@ -140,6 +144,7 @@ a.link-sf:active:before {
     padding: 0px 0;
     border-radius: 0px;
     top: +50px;
+    line-height: 1;
 
     /* Position the tooltip text - see examples below! */
     position: absolute;
@@ -370,14 +375,23 @@ background: rgba(255, 255, 255, .15);
 }
 
 .progress {
-margin-bottom: 10px;
+margin-bottom: 5px;
 background: rgba(0, 0, 0, .25);
-height: 10px;
+height: 5px;
 }
 
 .progress-bar-sf {
-background-color: rgba(98, 208, 240, .1);
+    padding-top: 8px;
+background-color: rgba(100, 240, 36, 0.5);
+    height: 6px;
 }
+
+.progress-bar-sf-nok {
+    padding-top: 8px;
+    background-color: rgba(240, 3, 0, 0.8);
+    height: 6px;
+}
+
 
 /* Main Layout */
 #page-container {
@@ -701,3 +715,39 @@ background-color: rgba(98, 208, 240, .1);
 
 .overflow-hidden { overflow: hidden; }
 .visibility-hidden { visibility: hidden; }
+
+svg {
+    width: 30%;
+    height: 10%;
+}
+
+#pulsar{
+    stroke-dasharray:281;
+    -webkit-animation: dash 2.5s infinite linear forwards;
+}
+
+#jugular{
+    stroke-dasharray:497;
+    -webkit-animation: dash 1.4s infinite ease forwards;
+}
+
+#bleed{
+    stroke-dasharray:437;
+    -webkit-animation: dash 1.2s infinite ease-out ;
+}
+#flat{
+    stroke-dasharray:814;
+    -webkit-animation:dash 10s infinite linear;
+}
+/*Animation is the same for all 3 SVG's*/
+@-webkit-keyframes dash{
+    from{
+
+        stroke-dashoffset:814;
+    }
+    to {
+        stroke-dashoffset:-814;
+
+    }
+
+}

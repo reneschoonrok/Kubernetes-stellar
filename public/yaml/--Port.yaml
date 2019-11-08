@@ -1,0 +1,4 @@
+#spec:
+  #containers:
+    ports:
+    - containerPort: 80

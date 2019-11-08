@@ -1,0 +1,8 @@
+#spec:
+  #rules:
+  #- http:
+      #paths:
+      - path: /kiwi
+        backend:
+          serviceName: kiwi-svc
+          servicePort: 8080

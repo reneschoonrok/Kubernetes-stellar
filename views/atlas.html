@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Kubernetes-Atlas</title>
+  <link rel="stylesheet" href="/css/atlas.css">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png" sizes="32x32">
+
+    <!-- Web fonts -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,600,700&Open+Sans:300,400,600,700">
+
+    <!-- Bootstrap and Ares CSS -->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+  <link rel="stylesheet" href="/css/animate.min.css">
+
+       <link rel="stylesheet" href="/css/aresatlas.css">
+
+    <header id="page-header">
+        <div class="h3 text-right pull-right hidden-xs">
+            <div class="text-crystal font-w300">Transmitting</div>
+            <div class="text-success animated infinite pulse pull-right">[CONNECTED]</div>
+        </div>
+        <h1 class="h3 font-w200">
+            <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://kubernetes.io" target="_blank">KUBERNETES </a><a class="link-sf font-w300" href="/" target="_blank"> //STELLAR </a><a class="link-sf font-w300" href="/atlas"> //ATLAS </a><a class="link-sf font-w300" href="/launchpad" target="_blank"> //LAUNCHPAD </a>
+        </h1>
+        <p>
+            <label for="box" id="lineid" style = "font-size:14px">Welcome to ATLAS-MODULE - Get history and transactions from Pods / Containers.. </label>
+        </p>
+
+
+        <script>
+            function sendToken() {
+                myauthtoken = document.getElementById('mytoken').value;
+            }
+        </script>
+
+
+
+
+    </header>
+
+
+  </head>
+  <body>
+  <!-- partial:index.partial.html -->
+<canvas id="c" style="z-index:-1000;"></canvas>
+
+  <!--<div class="info1">Click to add gravity point2.</div>
+ <div class="info2">Click to add gravity point3.</div>-->
+ <button type="button";class="info2" onclick="loaddata()">Get data!</button>
+ <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for container-id.." title="Type in a name">
+ <div id="container" class="info2"></div>
+
+ <!-- partial -->
+  </script><script  src="/js/dat.js"></script>
+ </script><script  src="/js/script.js"></script>
+<script src="js/typing.js"></script>
+  <div class="info">Click below to add a gravity point!</div>
+
+
+<script src="js/data.js"></script>
+<script>
+
+var intervalID = window.setInterval(getdata, 8000);
+
+function getdata() {
+loaddata();
+}
+
+function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("mytable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2017-12-27T18:36:28Z
+  name: game-config-file
+  namespace: default
+  resourceVersion: "809965"
+  uid: d9d1ca5b-eb34-11e7-887b-42010a8002b8
+data:
+  enemies: aliens
+  energy: "3"

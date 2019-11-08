@@ -104,7 +104,7 @@ function deletePod() {
                 areatext.value= '';
                 if (xhttp.responseText==""){selecteditem="";} //leeg dus leegmaken
                 var response = JSON.parse(xhttp.responseText);
-                var responsestr = response.body.split("\n");
+                //var responsestr = response.body.split("\n");
 
                     areatext.value = "pod deleted"
 
