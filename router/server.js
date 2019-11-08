@@ -16,6 +16,7 @@ var envtoken = 'empty';
 var authtoken = 'also empty';
 const client = new Client({ version: '1.13' })
 var chattext = [];
+var mysqlip = 'empty';
 
 
 app.use(express.static('public'));
@@ -23,6 +24,17 @@ app.use(express.static('public'));
 app.engine('html', require('ejs').renderFile);
 app.set('views', __dirname + '\views');
 app.set('view engine', 'ejs');
+//mysqlip = process.env.MYSQLIP
+//mysqlpw = process.env.MYSQLPW
+//console.log('mysqlip: '+mysqlip);
+//var mysql      = require('mysql');
+//var connection = mysql.createConnection({
+//    //host     : 'localhost',
+//   host     : mysqlip,
+//    user     : 'root',
+//    password : mysqlpw,
+//    database : 'dbk8s'
+//});
 
 
 async function getpods (namespace_name) {
@@ -140,6 +152,50 @@ async function getpvc (namespace_name) {
 app.get('/', function (req, res) {
     res.render('../views/index.html');
     console.log("Home page displayed");
+});
+
+app.get('/launchpad', function (req, res) {
+    res.render('../views/launchpad.html');
+    console.log("Home page displayed");
+});
+
+app.get('/atlas', function (req, res) {
+    res.render('../views/atlas.html');1
+    console.log("Atlas page displayed");
+    if(connection.state === 'disconnected'){
+        connection.connect(function(err) {
+          if (err) {
+          console.log('NOT Connected to DB');
+            //return console.error('error: ' + err.message);
+          }
+
+          console.log('Connected to the MySQL server.');
+        });
+
+    }
+    //connection.connect();
+    //console.log("db connected..maybe");
+});
+
+app.get("/getdata", function(httpRequest, httpResponse, next){
+
+    var sql = "SELECT * FROM `dbk8s`.`containerdata` order by id desc LIMIT 50;";
+
+    //SELECT * FROM db.containers order by id desc LIMIT 30;
+    if(connection.state === 'disconnected'){
+        console.log('mysqlip:' + mysqlip);
+        connection.connect();
+    }
+    connection.query(sql, function (err, result) {
+        if (err) console.log("Database error");
+        //console.log(result);
+        else {
+            //console.log(result[1].id + result[1].id);
+            httpResponse.send(result);
+        }
+    });
+
+
 });
 
 //app.get('/', function(req, res) {

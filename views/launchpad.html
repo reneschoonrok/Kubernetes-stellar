@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Kubernetes Yaml Generator</title>
+
+        <meta name="description" content="Kubernetes yaml generator. Make it easy to create your first yaml deployment files like Pod, Namespace, Secret etc.">
+        <meta name="keywords" content="Kubernetes,Yaml,Generator,Pod,Namespace,Ingress,Kubectl,Rene Schoonrok">
+        <meta name="author" content="Rene Schoonrok">
+        <meta name="robots" content="all">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+        <!-- Favicons (just the basics for now, check out http://realfavicongenerator.net/ for all available) -->
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
+        <meta name="google-site-verification" content="6mAronVAjEldjDeJg1x65JHG9cqQ8-eM2ukIPr9AOMc" />
+        <!-- Web fonts -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:200,300,400,600,700&Open+Sans:300,400,600,700">
+
+        <!-- Bootstrap and Ares CSS -->
+        <link rel="stylesheet" href="/css/bootstrapfactory.min.css">
+        <link rel="stylesheet" href="/css/animatefactory.min.css">
+        <link rel="stylesheet" href="/css/aresfactory.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/dracula.min.css">
+
+
+    </head>
+
+    <body>
+
+        <!-- Page Container -->
+        <!--
+            Available Classes: 'modern-sf', 'vintage-sf', 'interstellar-sf'
+        -->
+        <div id="page-container" class="modern-sf">
+            <!-- Header -->
+            <header id="page-header">
+                <!--    <div class="h3 text-right pull-right hidden-xs">
+                       <div class="text-crystal font-w300">Transmitting</div>
+                       <div class="text-success animated infinite pulse pull-right">[CONNECTED]</div>
+                   </div>-->
+                   <h1 class="h3 font-w200">
+                       <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://kubernetes.io/docs/concepts/workloads/" target="_blank">KUBERNETES </a><a class="link-sf font-w300" href="/" target="_blank"> //STELLAR </a></a><a class="link-sf font-w300" href="/launchpad"> //LAUNCHPAD </a>
+                   </h1>
+                   <p>
+                   <label for="box" id="lineid" style = "font-size:14px">Welcome - This page can help you with creating kubernetes yaml files. </label>
+                   <label for="box" style = "font-size:14px">//Click a resource. Add components and save as yaml. </label>
+               </p>
+
+
+                   <script>
+                       function sendToken() {
+                           myauthtoken = document.getElementById('mytoken').value;
+                       }
+                   </script>
+
+
+
+
+               </header>
+               <!-- END Header -->
+            <div class="sidenav">
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectPod(this.innerText)">Resources</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectPod(this.innerText)">Pod</a>
+                <a href="#" onclick="selectPod(this.innerText)">Service</a>
+                <a href="#" onclick="selectPod(this.innerText)">Deployment</a>
+                <a href="#" onclick="selectPod(this.innerText)">Namespace</a>
+                <a href="#" onclick="selectPod(this.innerText)">Job</a>
+                <a href="#" onclick="selectPod(this.innerText)">Cronjob</a>
+                <a href="#" onclick="selectPod(this.innerText)">Configmap</a>
+                <a href="#" onclick="selectPod(this.innerText)">Secret</a>
+                <a href="#" onclick="selectPod(this.innerText)">PersistentVolume</a>
+                <a href="#" onclick="selectPod(this.innerText)">PersistentVolumeClaim</a>
+                <a href="#" onclick="selectPod(this.innerText)">PodDisruptionBudget</a>
+
+
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">Pod Components</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">--LivenessProbeHttp</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--LivenessProbeCmd</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--Readynessprobe</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--Pod-Volumeclaim</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--Port</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--Resources</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--MultiContainer</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--Pod-Namespace</a>
+                <a href="#" onclick="selectComponent(this.innerText)">--LivenessProbeHttp</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">Job Components</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">--Job-Parallelism</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">Ingress Components</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">--Path</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectComponent(this.innerText)">Examples</a>
+                <div class="divider">------------------------</div>
+                <a href="#" onclick="selectOther(this.innerText)">Nginx</a>
+                <a href="#" onclick="selectOther(this.innerText)">Busybox</a>
+                <a href="#" onclick="selectOther(this.innerText)">Mysql</a>
+                <a href="#" onclick="selectOther(this.innerText)">Mysql-pv</a>
+                <a href="#" onclick="selectOther(this.innerText)">MultiContainerPod</a>
+                <a href="#" onclick="selectOther(this.innerText)">NginxDebianVolume</a>
+                <a href="#" onclick="selectOther(this.innerText)">Deployment-stellar</a>
+                <a href="#" onclick="selectOther(this.innerText)">Service-stellar</a>
+            </div>
+            <!-- Main Content -->
+            <main id="page-main">
+
+                <!-- Columns -->
+                <div class="row">
+
+                    <!-- Animated Circles Column -->
+                    <div class="col-sm-6 col-lg-push-2 overflow-hidden">
+
+                                        <div class="row">
+
+                                             <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                                 <div class="container" contenteditable="true">
+                                                 <textarea class="btn btn-xl btn-block btn-sf3" id="areatext" contenteditable="true" rows="18" cols="80" class="button6" style="resize:none" data="pod.yaml"></textarea>
+                                                </div>
+
+                                            </div>
+
+
+
+
+                                            <div class="col-xs-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                                <button class="btn btn-xl btn-block btn-sf" id="podinfodetail10" onclick="mergecomp()">Merge below into yaml</button>
+
+                                            </div>
+                                            <!-- <input type="text" id="foo" value="text to copy" />
+                                           <button onclick="copy('areatext')">Copy text</button>-->
+                                           <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+
+                                               <button class="btn btn-xl btn-block btn-sf"  id="podinfodetail10" onclick="mergecomp()"></button>
+                                               <div class="tooltip"><span class="tooltiptext">Click to merge</span><img src="/img/arrows.gif" onclick="mergecomp()"/></div>
+                                           </div>
+                                           <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+
+                                               <button class="btn btn-xl btn-block btn-sf2" id="save" onclick="download()">Save yaml</button>
+                                           </div>
+
+                                           <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+
+                                               <button class="btn btn-xl btn-block btn-sf2" id="save" onclick="copy('areatext')">Copy for iphone</button>
+                                           </div>
+
+
+                                           <div class="col-xs-8 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                               <div class="container" contenteditable="true">
+                                                   <textarea class="btn btn-xl btn-block btn-sf3" id="areatext2" rows="12" cols="80" class="button6" style="resize:none" data="pod.yaml"></textarea>
+                                               </div>
+
+                                           </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- END Animated Circles Column -->
+
+
+
+                </div>
+                <!-- END Columns -->
+
+                <!-- Page Footer -->
+                <div class="block">
+
+                    <div class="block-content block-content-full font-s12 text-center visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="1000">
+                        2019 &copy; Build by Rene Schoonrok. <a class="link-sf" href="https://github.com/reneschoonrok/">Github</a>
+                    </div>
+                </div>
+                <!-- END Page Footer -->
+            </main>
+            <!-- END Main Content -->
+        </div>
+        <!-- END Page Container -->
+
+        <!-- Scripts -->
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/jquery.appear.min.js"></script>
+        <script src="./js/jquery.countTo.min.js"></script>
+        <script src="./js/jquery.easypiechart.min.js"></script>
+         <script src="./js/ares.js"></script>
+
+         <!-- Page JS Code -->
+        <script>
+            function changenamespace(element) {
+                //alert(element.options[element.selectedIndex].text)
+                mynamespace =element.options[element.selectedIndex].text;
+                //var lineid = document.getElementById("lineid")
+                //lineid.textContent ="Connecting to namespace. Make sure your serviceaccount has rights!"
+            }
+
+            function changenamespacecustom(element) {
+                //alert(element.options[element.selectedIndex].text)
+                mynamespace =element.value;
+            }
+            var mynamespace = 'dev';
+            var podinfo = [];
+            var eventinfo = [];
+            var ingressinfo = [];
+            var pvcinfo = [];
+            var deployment = [];
+            var selecteditem = "";
+            var selectedcomponent = "";
+            var selectedtype = "";
+            var myauthtoken = "empty";
+            var showdeployments = "false";
+            var showvolumes = "false";
+
+
+            $(document).keypress(function (e) {
+                if (e.which == 13) {
+                    //alert('enter key is pressed');
+                    //console.log('enter key is pressed');
+                    addchatline();
+                    chatmsg.text = '';
+                }
+            });
+
+            jQuery(function(){
+                // Init page helpers (Appear + CountTo + Easy Pie Chart plugins)
+                Ares.initHelpers(['appear', 'appear-countTo', 'easy-pie-chart']);
+            });
+            //podnum.innerHTML=65
+
+
+
+
+                //$('input.form-control,textarea').on('click',function(){
+                //    $(this).focus();
+                //});
+
+
+            var copy = function(elementId) {
+
+                var input = document.getElementById(elementId);
+                var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+
+                if (isiOSDevice) {
+
+                    var editable = input.contentEditable;
+                    var readOnly = input.readOnly;
+
+                    input.contentEditable = true;
+                    input.readOnly = false;
+
+                    var range = document.createRange();
+                    range.selectNodeContents(input);
+
+                    var selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+
+                    input.setSelectionRange(0, 999999);
+                    input.contentEditable = editable;
+                    input.readOnly = readOnly;
+
+                } else {
+                    input.select();
+                }
+
+                document.execCommand('copy');
+            }
+
+                const getResource = async file => {
+                  const response = await fetch('./yaml/'+file)
+                  const text = await response.text()
+                  //console.log(text)
+                  areatext.value = text
+                }
+
+                 const getComponent = async file => {
+                  const response = await fetch('./yaml/'+file)
+                  const text = await response.text()
+                  //console.log(text)
+                  areatext2.value = text
+                }
+
+            function download(){
+                var text = document.getElementById("areatext").value;
+                text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+                var blob = new Blob([text], { type: "text/plain"});
+                var anchor = document.createElement("a");
+                anchor.download = "download.yaml";
+                anchor.href = window.URL.createObjectURL(blob);
+                anchor.target ="_blank";
+                anchor.style.display = "none"; // just to be safe!
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+            }
+
+            function copy(){
+                var myareatext = document.getElementById("areatext").select();
+                var text = document.getElementById("areatext").value;
+                text = text.replace(/\n/g, "\r\n"); // To retain the Line breaks.
+
+                //areatext.setSelectionRange(0, 999999);
+                document.execCommand('copy');
+
+            }
+
+            function domerge(selector) {
+                var textmain = document.querySelector('textarea').value;
+                var linesmain = textmain.split('\n');
+                var textcomponent = document.querySelectorAll('textarea')[1].value;
+                var linescomponent = textcomponent.split('\n');
+                var textToFind = "#";
+
+                //if you want to match id- string exists at any position
+                var matches = linescomponent.filter(function(windowValue){
+                    if(windowValue) {
+                        return windowValue.indexOf(textToFind) < 0;
+                    }
+                }); //["id-3-text", "3-id-text"]
+
+
+                var html = linesmain;
+                var text2 = document.querySelectorAll('textarea')[1].value;
+                //console.log(text2)
+
+                var counter = linesmain.findIndex(element => element.includes(selector));
+                var i = 0;
+                var newtext=[];
+                newtext.value = "";
+                while (i < counter+1) {
+                    newtext.value += linesmain[i];
+                    newtext.value += "\r\n";
+                    i++;
+                }
+                var arrayLength = matches.length;
+                for (var j = 0; j < arrayLength; j++)
+                {
+                    newtext.value +=matches[j];
+                    newtext.value += "\r\n";
+                }
+
+                arrayLength = linesmain.length
+
+                while (i<arrayLength) {
+                    newtext.value += linesmain[i];
+                    newtext.value += "\r\n";
+                    i++;
+                }
+                console.log(newtext)
+                document.querySelector('textarea').value = newtext.value;
+
+
+            }
+
+             function mergecomp() {
+
+                 if (selectedcomponent=="--Port"){
+
+                     domerge("image:")
+                 }
+
+                 if (selectedcomponent=="--LivenessProbeHttp"){
+                     domerge("image:")
+                 }
+
+                 if (selectedcomponent=="--LivenessProbeCommand"){
+                     domerge("image:")
+                 }
+                 if (selectedcomponent=="--Readynessprobe"){
+                     domerge("image:")
+                 }
+                 if (selectedcomponent=="--Resources"){
+                     domerge("image:")
+                 }
+
+                 if (selectedcomponent=="--Pod-Namespace"){
+                     domerge("name:")
+                 }
+
+                 if (selectedcomponent=="--Pod-Volumeclaim"){
+                     domerge("image:")
+                 }
+
+                 if (selectedcomponent=="--Job-Parallelism"){
+                     domerge("spec:")
+                 }
+                 if (selectedcomponent=="--Path"){
+                     domerge("paths:")
+                 }
+
+                 if (selectedcomponent=="--MultiContainer"){
+                     domerge("containers:")
+                 }
+
+            }
+
+             function function2() {
+                getComponent('livenessprobe.yaml')
+            }
+
+            function selectComponent(itemtext) {
+                selectedcomponent = itemtext;
+
+                if (selectedcomponent!="")
+                {
+                    getComponent(selectedcomponent+'.yaml')
+                }
+
+            }
+
+            function selectPod(itemtext) {
+                selecteditem = itemtext;
+                selectedtype = "Pod";
+                const myNode = document.getElementById("compblock");
+
+                if (itemtext=='Pod')
+                {
+                }
+
+                if (itemtext=='Job')
+                {
+
+                }
+
+                if (itemtext=='Ingress')
+                {
+
+
+                }
+
+
+                if (selecteditem != ""){
+                    var openitem = selecteditem+ '.yaml';
+                    getResource(openitem)
+                 }
+
+            }
+
+            function selectOther(itemtext) {
+                selecteditem = itemtext;
+                selectedtype = "Pod";
+                const myNode = document.getElementById("compblock");
+
+
+
+
+                if (selecteditem != ""){
+                    var openitem = selecteditem+ '.yaml';
+                    getResource(openitem)
+                }
+
+            }
+
+        </script>
+        <script src="js/typing.js"></script>
+
+   </body>
+</html>

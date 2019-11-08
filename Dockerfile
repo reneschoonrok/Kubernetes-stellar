@@ -1,11 +1,12 @@
-FROM node:10-alpine
+FROM alpine
 
-RUN mkdir -p /usr/src/app/node_modules && chown -R node:node /usr/src/app
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup && apk add --update nodejs
+RUN id -u appuser
+
+RUN mkdir -p /usr/src/app/node_modules
 
 # Create app directory
 WORKDIR /usr/src/app
-
-USER 1000
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -13,9 +14,8 @@ USER 1000
 COPY public ./public/
 COPY router ./router/
 COPY views ./views/
+COPY node_modules ./node_modules/
 
-RUN npm i ejs --production
-RUN npm i kubernetes-client --production
-RUN npm i express --production
+USER 100
 EXPOSE 8080
 CMD [ "node", "./router/server.js" ]

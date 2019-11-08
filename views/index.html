@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Kuberntes-Stellar</title>
+        <title>Kubernetes-Stellar</title>
 
         <meta name="description" content="A futuristic kubernetes dashboard">
         <meta name="author" content="Rene Schoonrok">
@@ -40,26 +40,31 @@
                     <div class="text-success animated infinite pulse pull-right">[CONNECTED]</div>
                 </div>
                 <h1 class="h3 font-w200">
-                    <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://github.com/reneschoonrok/Kubernetes-stellar">KUBERNETES-STELLAR</a>
+                    <span class="text-crystal">//</span> <a class="link-sf font-w300" href="https://kubernetes.io" target="_blank">KUBERNETES </a><a class="link-sf font-w300" href="/"> //STELLAR </a></a><a class="link-sf font-w300" href="/launchpad" target="_blank"> //LAUNCHPAD </a>
                 </h1>
                 <p>
-                <label for="box" id="lineid" style = "font-size:14px">Welcome - Scanning for Hybrid Cloud Technology  </label>
-                <label for="box" style = "font-size:14px">//GKE //EKS //AKS //Openshift //Minikube //Other. </label>
-                    <label for="box" style = "font-size:14px">Select or enter a namespace to start receiving. </label>
-            </p>
+                <label for="box" id="lineid" style = "font-size:14px">Welcome to STELLAR dashboard. Runs in any kubernetes cluster by just starting a pod! Click above modules to start LAUNCHPAD or go to the KUBERNETES.IO docs.  </label>
+                    <!--<label for="box" style = "font-size:14px">//GKE //EKS //AKS //Openshift //Minikube //Other. </label>
+                     <label for="box" style = "font-size:14px">Select or enter a namespace to start receiving. </label>     -->
+             </p>
+                <!--  <svg version="1.2" height="5" width="200" xmlns="http://www.w3.org/2000/svg"
+                      viewport="0 0 5 30" xmlns:xlink="http://www.w3.org/1999/xlink">
+                     <path stroke="rgba(15,0,0,0.1)" fill="none" stroke-width="1" stroke-linejoin="round" d="M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210" />
+                     <path id="pulsar"stroke="rgba(0,155,155,1)" fill="none" stroke-width="1"stroke-linejoin="round" d="M0,90L250,90Q257,60 262,87T267,95 270,88 273,92t6,35 7,-60T290,127 297,107s2,-11 10,-10 1,1 8,-10T319,95c6,4 8,-6 10,-17s2,10 9,11h210" />
+                 </svg>
+                  -->
+
+                  <script>
+                      function sendToken() {
+                          myauthtoken = document.getElementById('mytoken').value;
+                      }
+                  </script>
 
 
-                <script>
-                    function sendToken() {
-                        myauthtoken = document.getElementById('mytoken').value;
-                    }
-                </script>
 
 
-
-
-            </header>
-            <!-- END Header -->
+              </header>
+              <!-- END Header -->
 
             <!-- Main Content -->
             <main id="page-main">
@@ -187,6 +192,56 @@
 
                     <!-- Left Column -->
                     <div class="col-sm-6 col-lg-3 col-lg-pull-6">
+
+                        <!-- HQ_COMS -->
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" id="myresourceslabel" data-toggle="appear" data-class="animated fadeInDown" onclick="displayResources()">-Resources</h2>
+                            </div>
+                            <div class="block-content overflow-hidden">
+                                <div class="row items-push">
+                                    <p>
+                                    <div class="col-xs-3 visibility-hidden" id="res1" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <label for="box" style = "font-size:16px; ; line-height: 1;">Namespace:</label>
+                                    </div>
+                                    <div class="col-xs-2 visibility-hidden" id="res2" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                        <div class="box" >
+                                            <select id="selectnamespace" onchange="changenamespace(this);">
+                                                <option>dev</option>
+                                                <option>kube-system</option>
+                                                <option>tst</option>
+                                                <option>default</option>
+                                                <option>custom</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                                <div class="row items-push">
+                                    <div class="col-xs-3 visibility-hidden" id="res3" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
+                                        <label for="box" style = "font-size:14px; color: white; line-height: 1; /* 16.9px line-height */">Custom Namespace:</label>
+                                    </div>
+                                    <div class="col-xs-2 visibility-hidden" id="res4" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
+                                        <input type="text" class="btn btn-xl btn-block btn-sf3 push-10" id="customnamespace" placeholder="<enter namespace>" class="button6" size="15" style="resize:none" onchange="changenamespacecustom(this);"></input>
+                                        <!--<input type="text" id="customnamespace" style = "font-size:14px; color: black" placeholder="custom" onchange="changenamespacecustom(this);"> -->
+                                    </div>
+                                </div>
+                                <div class="row items-push">
+                                    <div class="col-xs-3 visibility-hidden" id="res5" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
+                                        <label for="box" style = "font-size:14px; color: white; line-height: 1;">Enable logs and delete</label>
+                                        <!-- <button type="button" class="box" style = "font-size:14px; color: black" onclick="sendToken()">Submit token to see logs (click)</button> -->
+                                    </div>
+                                    <div class="col-xs-2 visibility-hidden" id="res6" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
+                                        <input type="password" class="btn btn-xl btn-block btn-sf3 push-10" id="mytoken" placeholder="<input token + enter>" class="button6" size="15" style="resize:none" onchange="sendToken()"></input>
+                                        <!--<input type="password" style = "font-size:14px; color: black" id="mytoken" placeholder="enter token"> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END HQ_COMS -->
+
+
                         <!-- Environment -->
                         <div class="block">
                             <div class="block-header overflow-hidden">
@@ -226,55 +281,6 @@
 
                     <!-- Right Column -->
                     <div class="col-sm-6 col-lg-3">
-                        <!-- HQ_COMS -->
-                        <div class="block">
-                            <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Resources</h2>
-                            </div>
-                            <div class="block-content overflow-hidden">
-                                <div class="row items-push">
-                                    <p>
-                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <label for="box" style = "font-size:16px;">Namespace:</label>
-                                    </div>
-                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <div class="box" >
-                                            <select id="selectnamespace" onchange="changenamespace(this);">
-                                                <option>dev</option>
-                                                <option>kube-system</option>
-                                                <option>tst</option>
-                                                <option>default</option>
-                                                <option>custom</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                    </p>
-                                </div>
-                                <div class="row items-push">
-                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
-                                        <label for="box" style = "font-size:14px; color: white">Custom Namespace:</label>
-                                    </div>
-                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
-                                        <input type="text" class="btn btn-xl btn-block btn-sf3 push-10" id="customnamespace" placeholder="<enter namespace>" class="button6" size="15" style="resize:none" onchange="changenamespacecustom(this);"></input>
-                                        <!--<input type="text" id="customnamespace" style = "font-size:14px; color: black" placeholder="custom" onchange="changenamespacecustom(this);"> -->
-                                    </div>
-                                </div>
-                                <div class="row items-push">
-                                    <div class="col-xs-3 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
-                                        <label for="box" style = "font-size:14px; color: white">Enable logs and delete</label>
-                                        <!-- <button type="button" class="box" style = "font-size:14px; color: black" onclick="sendToken()">Submit token to see logs (click)</button> -->
-                                    </div>
-                                    <div class="col-xs-2 visibility-hidden" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
-                                        <input type="password" class="btn btn-xl btn-block btn-sf3 push-10" id="mytoken" placeholder="<input token + enter>" class="button6" size="15" style="resize:none" onchange="sendToken()"></input>
-                                        <!--<input type="password" style = "font-size:14px; color: black" id="mytoken" placeholder="enter token"> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END HQ_COMS -->
-
-
 
                         <!-- DATA_STREAM -->
                         <div class="block">
@@ -307,6 +313,55 @@
                             </div>
                         </div>
                         <!-- END DATA_STREAM -->
+                        <!-- POS_TRACKING -->
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Mem request stats</h2>
+                            </div>
+                            <div class="block-content block-content-full overflow-hidden" id="memblock">
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="100">X: 95</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="300">Y: 49</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="300">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">Z: 59</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="500">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100" style="width: 59%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="700">V: +60</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="700">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="block">
+                            <div class="block-header overflow-hidden">
+                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Cpu request stats</h2>
+                            </div>
+                            <div class="block-content block-content-full overflow-hidden" id="cpublock">
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="100">X: 95</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="300">Y: 49</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="300">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" style="width: 49%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="500">Z: 59</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="500">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100" style="width: 59%"></div>
+                                </div>
+                                <div class="font-w600 text-white-op push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" data-timeout="700">V: +60</div>
+                                <div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="700">
+                                    <div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END POS_TRACKING -->
                         <!-- Deployments -->
 
                         <div class="block">
@@ -377,16 +432,7 @@
                             </div>
                         </div>
                         <!-- END CHAT -->
-                        <!-- POS_TRACKING -->
-                        <div class="block">
-                            <div class="block-header overflow-hidden">
-                                <h2 class="block-title visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Mem / CPU stats (todo)</h2>
-                            </div>
-                            <div class="block-content block-content-full overflow-hidden">
 
-                            </div>
-                        </div>
-                        <!-- END POS_TRACKING -->
 
                     </div>
                     <!-- END Right Column -->
@@ -448,6 +494,7 @@
             var selectedtype = "";
             var myauthtoken = "empty";
             var showdeployments = "false";
+            var showresources = "true";
             var showvolumes = "false";
             canvasId.style.display = "none";
             canvasIdpong.style.display = "none";
@@ -523,6 +570,42 @@
                 {
                     showdeployments = "true";
                     mydeploymentslabel.textContent = "- DEPLOYMENTS"
+                }
+            }
+
+            function displayResources() {
+                var res1 = document.getElementById("res1")
+                var res2 = document.getElementById("res2")
+                var res3 = document.getElementById("res3")
+                var res4 = document.getElementById("res4")
+                var res5 = document.getElementById("res5")
+                var res6 = document.getElementById("res6")
+
+
+                var deploymentlabel = document.getElementById("myresourceslabel")
+                if (showresources == "true") {
+                    showresources = "false";
+                    myresourceslabel.textContent = "+ RESOURCES"
+                    res1.style.display = "none";
+                    res2.style.display = "none";
+                    res3.style.display = "none";
+                    res4.style.display = "none";
+                    res5.style.display = "none";
+                    res6.style.display = "none";
+
+                } else
+                {
+                    showresources = "true";
+
+                    myresourceslabel.textContent = "- RESOURCES"
+                    res1.style.display = "";
+                    res2.style.display = "";
+                    res3.style.display = "";
+                    res4.style.display = "";
+                    res5.style.display = "";
+                    res6.style.display = "";
+
+
                 }
             }
 
@@ -608,7 +691,7 @@
                 }
             }
 
-            var intervalID = window.setInterval(deploymentsload, 3000);
+            var intervalID = window.setInterval(deploymentsload, 5000);
 
             function deploymentsload() {
                 if ( showdeployments == "true")
@@ -617,7 +700,7 @@
                 }
             }
 
-            var intervalID = window.setInterval(getchat, 3000);
+            var intervalID = window.setInterval(getchat, 5000);
 
             function getchat() {
                 loadchat();

@@ -19,6 +19,8 @@ function loadinfo() {
     var response6 = jsonPath(response , "$..metadata.ownerReferences[0].kind");
     var response7 = jsonPath(response , "$..metadata.name");
     var response8 = jsonPath(response , "$..status.phase");
+    var response9 = jsonPath(response , "$..spec.containers[0].resources.requests.cpu");
+    var response10 = jsonPath(response , "$..spec.containers[0].resources.requests.memory");
     //console.log(response7);
 
     var arrayLength = response1.length;
@@ -42,14 +44,28 @@ function loadinfo() {
         //podinfo[j+7] = "-Started at: " + response6[i];
         podinfo[j+7] = "-Podstatus: " + response8[i];
         podinfo[j+8] = response7[i];
-        j = j + 9;
+        podinfo[j+9] = response9[i];
+        podinfo[j+10] = response10[i];
+        j = j + 11;
     }
       const myNode = document.getElementById("myblock");
       while (myNode.firstChild) {
           myNode.removeChild(myNode.firstChild);
 
       }
-      for ( var i = 0; i < podinfo.length; i += 9 ) {
+
+      const myNode1 = document.getElementById("memblock");
+      while (myNode1.firstChild) {
+          myNode1.removeChild(myNode1.firstChild);
+      }
+
+      const myNode2 = document.getElementById("cpublock");
+      while (myNode2.firstChild) {
+          myNode2.removeChild(myNode2.firstChild);
+      }
+      var totalmem=0;
+      var totalcpu = 0;
+      for ( var i = 0; i < podinfo.length; i += 11 ) {
 
           if ( podinfo[ i + 5 ] == "-Ready: true") {
               $('<div class="row items-push overflow-hidden">').appendTo('#myblock');
@@ -70,13 +86,39 @@ function loadinfo() {
               }
 
           }
+          var percmem = 0;
+          var perccpu =0;
+          //memcpustats
+          if (( typeof podinfo[ i + 9 ] != 'undefined')&&( typeof podinfo[ i + 10 ] != 'undefined')) {
+
+              percmem = parseInt(podinfo[i + 10].match(/\d+/)[0])/1000*100;
+              perccpu = parseInt(podinfo[i + 9].match(/\d+/)[0])/1000*100;
+
+              $('<div class="row items-push overflow-hidden">').appendTo('#memblock');
+              $('<div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">').appendTo('#memblock');
+              $('<div class="progress-bar progress-bar-sf progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="1500" style="width: '+percmem+'%"></div>&nbsp'+podinfo[i + 10]+'</div>').appendTo('#memblock');
+              //$('<button type="button" class="btn btn-xl btn-sf"></button>').text('   ' + podinfo[i + 10].match(/\d+/)[0]).appendTo('#memblock');
+
+
+              $('<div class="row items-push overflow-hidden">').appendTo('#cpublock');
+              $('<div class="progress visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">').appendTo('#cpublock');
+              $('<div class="progress-bar progress-bar-sf-nok progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="1500" style="width: '+perccpu+'%"></div>&nbsp'+podinfo[i + 9]+'</div>').appendTo('#cpublock');
+              //$('<button type="button" class="btn btn-xl btn-sf-nok"></button>').text('   ' + podinfo[i + 9].match(/\d+/)[0]).appendTo('#cpublock');
+
+              totalmem+=parseInt(podinfo[i + 10].match(/\d+/)[0]);
+              totalcpu+=parseInt(podinfo[i + 9].match(/\d+/)[0]);
+
+
+          }
+
 
       }
-      //if (podinfo.length > 8) {
-      //    podnum.innerHTML = podinfo.length / 9
-      //} else {
-      //    podnum.innerHTML = 0
-      //}
+      $('<div class="row items-push overflow-hidden">').appendTo('#memblock');
+      $('<button type="button" class="btn btn-xl btn-sf"></button>').text('Total: ' + totalmem).appendTo('#memblock');
+
+      $('<div class="row items-push overflow-hidden">').appendTo('#cpublock');
+      $('<button type="button" class="btn btn-xl btn-sf-nok"></button>').text('Total: ' + totalcpu).appendTo('#cpublock');
+
   }
 };
 }

@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-example
+  labels:
+    jobgroup: job-example
+spec:
+  template:
+    metadata:
+      name: cleanup
+      labels:
+        jobgroup: job-example
+    spec:
+      containers:
+      - name: c
+        image: kubernetes-job-example:latest
+        args: ["cleanup"]
+      restartPolicy: OnFailure

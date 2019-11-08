@@ -1,0 +1,9 @@
+#spec:
+   #containers:
+    volumeMounts:
+    - mountPath: "/var/www/html"
+      name: mypd
+  volumes:
+    - name: mypd
+      persistentVolumeClaim:
+        claimName: myclaim
