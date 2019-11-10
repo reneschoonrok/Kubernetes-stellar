@@ -12,7 +12,7 @@ No sidecar needed, no kubectl proxy needed. <br/>
 Make sure the pod has enough rights to read other pods and query kube-apiserver (it will use the pod serviceaccount rights). <br/>
 Quickest way..do this only on minikube!!: kubectl create clusterrolebinding add-on-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:default <br/>
 <br/>
-![](/stellar3.gif)
+![](/stellar4.gif)
 <br/>
 ## Prerequisites <br/>
 Get up and running with included yamls: <br/>

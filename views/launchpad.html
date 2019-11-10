@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="/css/bootstrapfactory.min.css">
         <link rel="stylesheet" href="/css/animatefactory.min.css">
         <link rel="stylesheet" href="/css/aresfactory.css">
+        <link rel="stylesheet" href="/css/launchpad.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/dracula.min.css">
 
 
@@ -183,7 +184,178 @@
             </main>
             <!-- END Main Content -->
         </div>
-        <!-- END Page Container -->
+
+        <button class="open-button" onclick="openForm()">Pod assistant</button>
+
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Create-a-pod assistant</h1>
+                <!--
+                               <label for="email"><b>Email</b></label>
+                               <input type="text" placeholder="Enter Email" name="email" required>
+
+                               <label for="psw"><b>Password</b></label>
+                               <input type="password" placeholder="Enter Password" name="psw" required>
+
+                               <button type="submit" class="btn">Login</button>
+               -->
+                <label for="email"><b></b></label>
+                               <div class='control'>
+                                   <h1>
+
+                                   </h1>
+                               </div>
+                               <br/>
+
+                               <div class='control block-cube block-input'>
+                                   <input name='contname' placeholder='pod name e.g. nginx-pod' type='text' id="myname">
+                                   <div class='bg-top'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='bg-right'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='bg'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                               </div>
+                               <br/>
+                               <div class='control block-cube block-input'>
+                                   <input name='contimage' placeholder='image tag e.g. nginx:latest' type='text' id="myimagetag">
+                                   <div class='bg-top'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+
+                                   <div class='bg-right'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='bg'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                               </div>
+                               <br/>
+                <div class='control block-cube block-input'>
+                    <input name='contport' placeholder='container port e.g. 8080' type='text' id="mycontport">
+                    <div class='bg-top'>
+                        <div class='bg-inner'></div>
+                    </div>
+
+                    <div class='bg-right'>
+                        <div class='bg-inner'></div>
+                    </div>
+                    <div class='bg'>
+                        <div class='bg-inner'></div>
+                    </div>
+                </div>
+                <br/>
+
+                <div class='control block-cube block-input'>
+                    <input name='contenvname' placeholder='env var name (or leave blank)' type='text' id="mycontenvname">
+                    <div class='bg-top'>
+                        <div class='bg-inner'></div>
+                    </div>
+
+                    <div class='bg-right'>
+                        <div class='bg-inner'></div>
+                    </div>
+                    <div class='bg'>
+                        <div class='bg-inner'></div>
+                    </div>
+                </div>
+                <br/>
+                <div class='control block-cube block-input'>
+                    <input name='contenvvar' placeholder='env var value (or leave blank)' type='text' id="mycontenvvalue">
+                    <div class='bg-top'>
+                        <div class='bg-inner'></div>
+                    </div>
+
+                    <div class='bg-right'>
+                        <div class='bg-inner'></div>
+                    </div>
+                    <div class='bg'>
+                        <div class='bg-inner'></div>
+                    </div>
+                </div>
+                <br/>
+
+
+
+                               <button class='btn block-cube block-cube-hover' type='button' onclick="generateYaml()">
+                                   <div class='bg-top'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='bg-right'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='bg'>
+                                       <div class='bg-inner'></div>
+                                   </div>
+                                   <div class='text'>
+                                       Generate yaml
+                                   </div>
+                               </button>
+
+
+
+                               <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                           </form>
+                       </div>
+
+                       <script>
+                           function openForm() {
+                               document.getElementById("myForm").style.display = "block";
+                           }
+
+                           function closeForm() {
+                               document.getElementById("myForm").style.display = "none";
+                           }
+                           function generateYaml() {
+                               //document.getElementById("myForm").style.display = "none";
+                               var newtext= [];
+                               newtext.value = 'apiVersion: v1';
+                               newtext.value += "\r\n";
+                               newtext.value += 'kind: Pod';
+                               newtext.value += "\r\n";
+                               newtext.value += 'metadata:';
+                               newtext.value += "\r\n";
+                               newtext.value += '  name: ';
+                               newtext.value += document.getElementById("myname").value;
+                               newtext.value += "\r\n";
+                               newtext.value += 'spec:';
+                               newtext.value += "\r\n";
+                               newtext.value += '  containers:';
+                               newtext.value += "\r\n";
+                               newtext.value += '  - name: ';
+                               newtext.value += document.getElementById("myname").value;
+                               newtext.value += "\r\n";
+                               newtext.value += '    image: ';
+                               newtext.value += document.getElementById("myimagetag").value;
+                               newtext.value += "\r\n";
+                               newtext.value += '    ports:';
+                               newtext.value += "\r\n";
+                               newtext.value += '    - containerPort: ';
+                               newtext.value += document.getElementById("mycontport").value;
+                               newtext.value += "\r\n";
+                               if ( document.getElementById("mycontenvname").value !="") {
+                                   newtext.value += '  env: ';
+                                   newtext.value += "\r\n";
+                                   newtext.value += '  - name: ';
+                                   newtext.value += document.getElementById("mycontenvname").value;
+                                   newtext.value += "\r\n";
+                                   newtext.value += '    value: ';
+                                   newtext.value += document.getElementById("mycontenvvalue").value;
+                               }
+                               //document.querySelector('textarea').value = 'wow';
+                               //document.querySelector('textarea').value = document.getElementById("myimagetag").value;
+                               document.querySelector('textarea').value = newtext.value;
+                           }
+
+                       </script>
+
+                   </body>
+               </html>
+
+               <!-- END Page Container -->
 
         <!-- Scripts -->
         <script src="./js/jquery.min.js"></script>
