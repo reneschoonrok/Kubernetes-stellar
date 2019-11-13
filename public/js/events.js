@@ -37,7 +37,7 @@ function loadevents() {
     }
       var currentTime = new Date();
       //currentTime = currentTime.getTime() -  currentTime.getTime() / 1000;git
-      currentTime = (currentTime.getTime()-86000);
+      currentTime = (currentTime.getTime()-100000);
       var teller = 0;
 
       const myNode = document.getElementById("myeventblock");
@@ -77,6 +77,10 @@ function loadevents() {
 
               if (eventinfo[ i + 7 ] =='Failed') {
                   $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/failed.png" /> Scheduled').appendTo('#myeventblock');
+              }
+
+              if (eventinfo[ i + 7 ] =='FailedScheduling') {
+                  $('<div class="tooltip"><span class="tooltiptext">'+eventinfo[i + 1]+'</span><img src="/img/FailedScheduling.png" /> Scheduled').appendTo('#myeventblock');
               }
 
               if (eventinfo[ i + 7 ] =='Unhealthy') {
