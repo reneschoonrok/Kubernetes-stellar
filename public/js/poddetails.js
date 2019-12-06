@@ -13,14 +13,14 @@ function loadpoddetails() {
                 var response = JSON.parse(xhttp.responseText);
 
                 podinfodetail1.innerHTML ='Podname         : ' + jsonPath(response , "$..metadata.name")+ "\r\n";
-                podinfodetail4.innerHTML = 'Pod IP          : ' + jsonPath(response, "$..status.podIP") + "\r\n";
+                podinfodetail4.innerHTML = 'Pod ip          : ' + jsonPath(response, "$..status.podIP") + ',    Node ip: ' + jsonPath(response , "$..status.hostIP")+ ',   Qos class: ' + jsonPath(response , "$..status.qosClass")+ "\r\n";
                 podinfodetail3.innerHTML ='Images          : ' + jsonPath(response , "$..spec.containers[*].image")+ "\r\n";
-                podinfodetail2.innerHTML='Cont.restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ "\r\n";
-                podinfodetail11.innerHTML='Cont. ports: ' +  jsonPath(response , "$..spec.containers[*].ports[*].containerPort")+ "\r\n";
-                podinfodetail12.innerHTML='cpu requests: ' + jsonPath(response , "$..spec.containers[0].resources.requests.cpu")+ "\r\n";
-                podinfodetail13.innerHTML='mem requests: ' + jsonPath(response , "$..spec.containers[0].resources.requests.memory")+ "\r\n";
-                podinfodetail14.innerHTML='cpu limits: ' + jsonPath(response , "$..spec.containers[0].resources.limits.cpu")+ "\r\n";
-                podinfodetail15.innerHTML='mem limits: ' + jsonPath(response , "$..spec.containers[0].resources.limits.memory")+ "\r\n";
+                podinfodetail2.innerHTML='Container restarts   : ' +  jsonPath(response ,"$..status.containerStatuses[*].restartCount")+ ',   Start time: ' + jsonPath(response , "$..status.startTime")+ "\r\n";
+                podinfodetail11.innerHTML='Container ports: ' +  jsonPath(response , "$..spec.containers[*].ports[*].containerPort")+ "\r\n";
+                podinfodetail12.innerHTML='cpu request: ' + jsonPath(response , "$..spec.containers[0].resources.requests.cpu")+ "\r\n";
+                podinfodetail13.innerHTML='mem request: ' + jsonPath(response , "$..spec.containers[0].resources.requests.memory")+ "\r\n";
+                podinfodetail14.innerHTML='cpu limit: ' + jsonPath(response , "$..spec.containers[0].resources.limits.cpu")+ "\r\n";
+                podinfodetail15.innerHTML='mem limit: ' + jsonPath(response , "$..spec.containers[0].resources.limits.memory")+ "\r\n";
 
                 podinfodetail5.innerHTML = "";
                 podinfodetail5f.innerHTML = "";
