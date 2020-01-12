@@ -117,7 +117,7 @@ function loadinfo() {
       $('<button type="button" class="btn btn-xl btn-sf"></button>').text('Total: ' + totalmem).appendTo('#memblock');
 
       $('<div class="row items-push overflow-hidden">').appendTo('#cpublock');
-      $('<button type="button" class="btn btn-xl btn-sf-nok"></button>').text('Total: ' + totalcpu).appendTo('#cpublock');
+      $('<button type="button" class="btn btn-xl btn-sf"></button>').text('Total: ' + totalcpu).appendTo('#cpublock');
 
   }
 };

@@ -202,12 +202,15 @@
                                 <div class="row items-push">
                                     <p>
                                     <div class="col-xs-3 visibility-hidden" id="res1" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
-                                        <label for="box" style = "font-size:16px; ; line-height: 1;">Namespace:</label>
+                                        <label for="box" style = "font-size:13px; ; line-height: 1;">Namespace:</label>
                                     </div>
                                     <div class="col-xs-2 visibility-hidden" id="res2" data-toggle="appear" data-class="animated fadeInLeft" data-timeout="100">
                                         <div class="box" >
-                                            <select id="selectnamespace" onchange="changenamespace(this);">
+                                            <select id="selectnamespace" style = "font-size:15px; color: #62D0F0;" onchange="changenamespace(this);">
                                                 <option>dev</option>
+                                                <option>tst</option>
+                                                <option>acc</option>
+                                                <option>prd</option>
                                                 <option>kube-system</option>
                                                 <option>tst</option>
                                                 <option>default</option>
@@ -219,9 +222,10 @@
                                     </div>
                                     </p>
                                 </div>
+
                                 <div class="row items-push">
                                     <div class="col-xs-3 visibility-hidden" id="res3" data-toggle="appear" data-class="animated fadeIn" data-timeout="300">
-                                        <label for="box" style = "font-size:14px; color: white; line-height: 1; /* 16.9px line-height */">Custom Namespace:</label>
+                                        <label for="box" style = "font-size:13px; color: #62D0F0; line-height: 1; /* 16.9px line-height */">Custom Namespace:</label>
                                     </div>
                                     <div class="col-xs-2 visibility-hidden" id="res4" data-toggle="appear" data-class="animated fadeIn" data-timeout="500">
                                         <input type="text" class="btn btn-xl btn-block btn-sf3 push-10" id="customnamespace" placeholder="<enter namespace>" class="button6" size="15" style="resize:none" onchange="changenamespacecustom(this);"></input>
@@ -230,7 +234,7 @@
                                 </div>
                                 <div class="row items-push">
                                     <div class="col-xs-3 visibility-hidden" id="res5" data-toggle="appear" data-class="animated fadeIn" data-timeout="700">
-                                        <label for="box" style = "font-size:14px; color: white; line-height: 1;">Enable logs and delete</label>
+                                        <label for="box" style = "font-size:13px; color: #62D0F0; line-height: 1;">Enable logs and delete</label>
                                         <!-- <button type="button" class="box" style = "font-size:14px; color: black" onclick="sendToken()">Submit token to see logs (click)</button> -->
                                     </div>
                                     <div class="col-xs-2 visibility-hidden" id="res6" data-toggle="appear" data-class="animated fadeIn" data-timeout="900">
