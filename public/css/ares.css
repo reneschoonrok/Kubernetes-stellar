@@ -9,9 +9,10 @@ html, body {
 }
 
 body {
-    color: #e8f4ff;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
+    color: #62d0f0;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
     background-image: url(/img/world.png);
     background-size: cover;
     background-attachment: fixed;
@@ -24,7 +25,7 @@ body {
 h1, h2, h3, .h1, .h2, .h3, .heading {
     font-family: 'Raleway', sans-serif;
     margin: 0;
-    color: #e8f4ff;
+    color: #62d0f0;
 }
 
 #canvasId{
@@ -58,7 +59,7 @@ p {
     height: 100px;
     padding: 1.875em;
     background: #191919;
-    box-shadow: 0px 0px 15px 2px #7Cbdbd inset;
+    box-shadow: 0px 0px 15px 2px #62d0f0 inset;
     border: 2px solid #3acaec;
     border-radius: 5px;
     line-height: 1; /* 16.9px line-height */
@@ -191,6 +192,7 @@ a.link-sf:active:before {
 }
 
 .text-crystal {
+    text-align: right;
     left: 40%;
     color: rgba(255, 255, 255, .85);
 }
@@ -206,6 +208,21 @@ a.link-sf:active:before {
 .text-danger {
     color: #e74c3c;
 }
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid #62d0f0;
+    -webkit-text-fill-color: #62d0f0;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
 
 .btn.btn-xl {
     padding: 8px 8px;
@@ -218,11 +235,17 @@ a.link-sf:active:before {
     text-align: left;
     font-weight: 600;
     font-size: 14px;
-    color: rgba(43, 193, 110, 1);
+    color: #62d0f0;
+    transition: all 0.7s ease;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
+    line-height: 200%;
     /*border: 2px solid rgba(255, 255, 255, .25);*/
     border-left-width: 4px;
     border-right-width: 4px;
     background: transparent;
+    padding: 0px 0px;
 }
 
 .btn.btn-sf:hover,
@@ -268,8 +291,12 @@ a.link-sf:active:before {
     width: auto;
     text-align: left;
     font-weight: 600;
-    font-size: 14px;
-    color: rgba(255, 255, 255, .75);
+    font-size: 13px;
+    color: #62d0f0;
+    transition: all 0.7s ease;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
+    letter-spacing: 0.1rem;
 /* border: 2px solid rgba(255, 255, 255, .25); */
 border-left-width: 4px;
 border-right-width: 4px;
@@ -295,8 +322,11 @@ background: rgba(255, 255, 255, .15);
     width: auto;
     text-align: left;
     font-weight: 600;
-    font-size: 14px;
-    color: rgba(43, 193, 110, 1);
+    font-size: 13px;
+    color: #62d0f0;
+    transition: all 0.7s ease;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
     /* border: 2px solid rgba(255, 255, 255, .25); */
     border-left-width: 4px;
     border-right-width: 4px;
@@ -316,8 +346,11 @@ background: rgba(255, 255, 255, .15);
     width: auto;
     text-align: left;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(255, 7, 9, 0.75);
+    transition: all 0.7s ease;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
     /* border: 2px solid rgba(255, 255, 255, .25); */
     border-left-width: 4px;
     border-right-width: 4px;
@@ -350,14 +383,17 @@ background: rgba(255, 255, 255, .15);
     text-align: left;
     font-weight: 600;
     font-size: 14px;
-    color: rgba(43, 193, 110, 1);
+    color: #62d0f0;
     /* border: 2px solid rgba(255, 255, 255, .25); */
+    transition: all 0.7s ease;
+    font-family: "Orbitron", sans-serif;
+    font-weight: normal;
     border-left-width: 2px;
     border-right-width: 2px;
     background: transparent;
     padding: 6px 6px;
     margin-bottom: 0px;
-    border-color: rgba(255, 255, 255, .5);
+    border-color: rgba(0, 195, 185, .5);
     outline: 0;
 }
 
@@ -441,7 +477,7 @@ background-color: rgba(100, 240, 36, 0.5);
 .block {
     margin-bottom: 20px;
     background-color: rgba(0, 0, 0, .15);
-    border-left: 4px solid rgba(255, 255, 255, .1);
+    border-left: 4px solid rgba(66, 214, 202, 0.3);
 }
 
 .block-header {

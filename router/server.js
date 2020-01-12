@@ -203,6 +203,7 @@ app.get("/getdata", function(httpRequest, httpResponse, next){
 //})
 
 app.get('/api', (req, res) => res.send('Hello World!'))
+
 app.get("/pods", function(httpRequest, httpResponse, next){
     var namespace_name =httpRequest.query.mynamespace;
     var pods = getpods(namespace_name)
